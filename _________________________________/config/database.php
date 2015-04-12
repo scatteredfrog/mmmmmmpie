@@ -64,10 +64,6 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -83,3 +79,15 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+if (substr($_SERVER['HTTP_HOST'],0,5) === 'local') {
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = '3legsramon';
+    $db['default']['database'] = 'pfpdb';
+} else {
+    $db['default']['hostname'] = 'mysql.fab4it.com';
+    $db['default']['username'] = 'fab4itcom';
+    $db['default']['password'] = '4baf09282004db';
+    $db['default']['database'] = 'fab4it_com';
+}

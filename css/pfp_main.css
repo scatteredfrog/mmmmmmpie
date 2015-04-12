@@ -1,0 +1,49 @@
+body {
+    background-color: #000;
+    font-family: 'Lucida Grande';
+    color: #eee;
+}
+
+a {
+    color: gold;
+}
+
+.containerCenter {
+    text-align: center;
+}
+.headerWrapper {
+    margin-left: auto;
+    margin-right: auto;
+    height: 340px;
+    position: relative;
+    font-size: 20px;
+    width: 787px;
+}
+#header_image {
+    background: url('/images/pfp_header_image.jpg');
+    height: 337px;
+    width: 787px;
+    float: left;
+}
+#header_contact {
+    float: left;
+    margin-top: 15px;
+}
+#twit1,#twit2,#eml1,#eml2,#eml3,#twit0,#eml0,#fbk1,#fbk0 {
+    float: left;
+}
+#eml1,#eml3,#twit2 {
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#eml1,#twit1,#fbk1 { margin-left: 15px; }
+#twit,#fbk { float: left; }
+#eml { float: right; }
+
+#fbk {
+    position: relative;
+    text-align: center;
+}
