@@ -80,11 +80,16 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-if (substr($_SERVER['HTTP_HOST'],0,5) === 'local') {
+if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Junk')) {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
     $db['default']['password'] = '3legsramon';
     $db['default']['database'] = 'pfpdb';
+} else if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Projects')) {
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'sqflirzel';
+    $db['default']['database'] = 'fab4it_com';    
 } else {
     $db['default']['hostname'] = 'mysql.fab4it.com';
     $db['default']['username'] = 'fab4itcom';
