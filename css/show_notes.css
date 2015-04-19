@@ -16,3 +16,7 @@
     display: none;
     overflow: scroll;
 }
+
+#log_out_click, #add_new_show_click, #add_notes_click, #edit_existing_notes_click {
+    cursor: pointer;
+}

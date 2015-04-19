@@ -9,7 +9,10 @@
         echo heading('Show Notes Admin');
     ?>
     <div id="add_notes_form" <?php if ($this->session->username) { ?>class="formVisible" <?php } ?>>
-        <span id="add_new_show_click">ADD NEW SHOW</span> | ADD NOTES | EDIT EXISTING NOTES | LOG OUT
+        <span id="add_new_show_click">ADD NEW SHOW</span> | 
+        <span id="add_notes_click">ADD NOTES</span> | 
+        <span id="edit_existing_notes_click">EDIT EXISTING NOTES</span> | 
+        <span id="log_out_click">LOG OUT</span>
     </div>
     <div id="add_notes_login" <?php if (!$this->session->username) { ?>class="formVisible" <?php } ?>>
         <?php

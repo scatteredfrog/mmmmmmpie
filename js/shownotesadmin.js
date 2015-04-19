@@ -11,8 +11,31 @@ $(document).ready(function() {
         });
     });
     
+    $('#password').on('keypress keydown keyup',function(e) {
+        if (e.keyCode === 13) {
+            $('#add_notes_button').trigger('click');
+        }
+    });
+    
     $('#add_new_show_click').on('click',function() {
+        $.post('shownotesadmin/getCurrentEpisode',{},function(data) {
+            $('#episode_number').val(data);
+        });
         $('#add_episode').css('display','block');
+        $('[id^=desc]').each(function() {
+            $(this).val('');
+        });
+        $('[id^=prior]').each(function() {
+            $(this).val('');
+        });
+    });
+    
+    $('#log_out_click').on('click',function() {
+        $.post('shownotesadmin/logOut',{},function() {
+            $('#add_episode').css('display','none');
+            $('#add_notes_form').removeClass('formVisible');
+            $('#add_notes_login').addClass('formVisible');
+        });
     });
     
     $('#click_to_add_notes').on('click',function() {
@@ -102,6 +125,10 @@ $(document).ready(function() {
                         switch(data) {
                             case '1':
                                 alert("Thanks! Your show and show notes have been added.");
+                                $('#add_episode').css('display','none');
+                                $('input').each(function() {
+                                    $(this).val('');
+                                })
                                 break;
                             case '2':
                                 alert("There was a problem trying to add your show notes.");
@@ -111,6 +138,7 @@ $(document).ready(function() {
                                 break;
                             default:
                                 alert("Thanks!");
+                                $('#add_episode').css('display','block');
                                 break;
                         }
                     });
@@ -134,7 +162,7 @@ function addMoreNotes() {
     } else {
         notes_count++;
         if (notes_count >= 1) {
-            $('#new_notes_container').html($('#new_notes_container').html() + "<div class='formLabelRow'>Description: <input type='text' id='description_"+notes_count+"' /> Link: <input type='text' id='descriptionlink"+notes_count+"' /> Priority: <input type='number' id='priority"+notes_count+"' /></div>");
+            $('#new_notes_container').append("<div class='formLabelRow'>Description: <input type='text' id='description_"+notes_count+"' /> Link: <input type='text' id='descriptionlink"+notes_count+"' /> Priority: <input type='number' id='priority"+notes_count+"' /></div>");
         }
     }
 }

@@ -10,6 +10,15 @@ class Shownotesadmin extends CI_Controller {
             $this->load->view('add_show_notes');
 	}
         
+        public function getCurrentEpisode() {
+            $this->load->model('shownotesadmin_model');
+            echo $this->shownotesadmin_model->getCurrentEpisode();
+        }
+        
+        public function logOut() {
+            $this->session->sess_destroy();
+        }
+        
         public function login() {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
