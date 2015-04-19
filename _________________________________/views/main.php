@@ -1,14 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Welcome to Pie Factory Podcast</title>
 
 <?php
-    $this->load->helper('html');
     echo link_tag('css/pfp_main.css');
 
 ?>
-    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src=<?=base_url("js/jquery-1.9.1.min.js"); ?>></script>
 </head>
 <body>
     <div class="containerCenter">

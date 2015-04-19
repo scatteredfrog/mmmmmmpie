@@ -47,3 +47,48 @@ a {
     position: relative;
     text-align: center;
 }
+
+hr {
+    background-color: green;
+    border-style: outset;
+    border-width: 1px;
+    color: blue;
+    padding-top: 3px;
+    position: relative;
+    top: 16px;
+}
+
+#show_notes_heading { clear: both; }
+#show_notes_heading h1 { padding-top: 9px; text-align: center; }
+.showNotes0 a, .showNotes1 a { text-decoration: none; color: #700; }
+.showNotes0, .showNotes1 {
+    width: 461px;
+    border-color: #ff4320;
+    border-radius: 12px;
+    border-width: 5px;
+    border-style: solid;
+    -webkit-border-radius: 5px;
+    padding: 5px 7px;
+    background-color: #444;
+}
+
+.episodeRow {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    clear: both;
+    position: relative;
+}
+.showNotes0 { float: left;  }
+.showNotes1 { float: right; }
+
+.showNote {
+    background-color: #fff;
+    border-bottom: 3px solid #000;
+    border-top: 3px solid #000;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    position: relative;
+    width: 98.5%;
+    padding-left: 7px;
+}
