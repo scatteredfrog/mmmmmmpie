@@ -202,6 +202,9 @@ $(document).ready(function() {
         $('#edit_notes').css('display','block');
     });
     
+    $('#episode_select').on('click', function() {
+        $('#ed_chooser').trigger('change');
+    });
 });
 
 function addMoreNotes() {

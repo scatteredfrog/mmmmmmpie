@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-#edit_notes_dropdown { position: relative; top: 5px; }
+#edit_notes_dropdown, #episode_select { position: relative; top: 5px; }
 #edit_label { padding-top: 10px; padding-bottom: 19px; }
 .edPriority { width: 50px; }
 .edLink, .episodeFz { width: 222px; }

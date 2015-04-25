@@ -17,6 +17,7 @@
                         <div class="formLabelRow" id="edit_label">
                             <div class="labelDivWide">Select an episode:</div>
                             <span id="edit_notes_dropdown"></span>
+                            <input type="button" id="episode_select" value="GO!" />
                         </div>
                     </form>
                 </div>
