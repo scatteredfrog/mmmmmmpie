@@ -21,6 +21,7 @@ $(document).ready(function() {
         $.post('shownotesadmin/getCurrentEpisode',{},function(data) {
             $('#episode_number').val(data);
         });
+        $('#edit_notes').css('display','none');
         $('#add_episode').css('display','block');
         $('[id^=desc]').each(function() {
             $(this).val('');
@@ -146,6 +147,61 @@ $(document).ready(function() {
             }
         );
     });
+    
+    $('#edit_existing_notes_click').on('click',function() {
+        $('#add_episode').css('display','none');
+        $.post('shownotesadmin/getEpisodes',{},function(data) {
+            $('#edit_notes_dropdown').html(data);
+            $('#ed_chooser').on('change',function() {
+                $('.x').remove();
+                $.post('shownotesadmin/getNotes', {
+                    'episode' : $('#ed_chooser').val()
+                    }, function(data) {
+                        var ip = '<input type="text" class="episodeFz" id="';
+                        var il = '<input type="text" class="edLink" id="';
+                        var ii = '<input type="number" class="edPriority" id="';
+                        var ic = '" />';
+                        var v = '" value="';
+                        var dbt = ' &nbsp; <input type="button" class="delete" id="delete';
+                        var dbi = '" value="Delete" />';
+                        var ubt = ' &nbsp; <input type="button" class="update" id="update';
+                        var ubi = '" value="Update" />';
+                        var fr = '<div class="formLabelRow x">';
+                        var fc = '</div>';
+                        var s= ' &nbsp; ';
+                        var jdata = JSON.parse(data);
+                        var adata = [];
+                        for (var x in jdata) {
+                            adata.push(jdata[x]);
+                        }
+                        var ajlen = adata.length;
+                        for (var y = 0; y < ajlen; y++) {
+                            var row = "";
+                            row += fr + ip + "ed_episode" + y + v + adata[y]['note'] + ic;
+                            row += s + il + "ed_link" + y + v + adata[y]['description_link'] +ic;
+                            row += s + ii + "ed_priority" + y + v + adata[y]['priority'] + ic;
+                            row += dbt + adata[y]['id'] + dbi;
+                            row += ubt + adata[y]['id'] + ubi;
+                            row += fc;
+                            $('#edit_notes_form').append(row);
+                        }
+                        $('.delete').each(function() {
+                            $(this).on('click', function() {
+                                deleteNote($(this).attr('id'));
+                            });
+                        });
+                        $('.update').each(function() {
+                            $(this).on('click', function() {
+                                updateNote($(this).attr('id'));
+                            });
+                        })
+                    }
+                );
+            });
+        });
+        $('#edit_notes').css('display','block');
+    });
+    
 });
 
 function addMoreNotes() {
@@ -165,4 +221,32 @@ function addMoreNotes() {
             $('#new_notes_container').append("<div class='formLabelRow'>Description: <input type='text' id='description_"+notes_count+"' /> Link: <input type='text' id='descriptionlink"+notes_count+"' /> Priority: <input type='number' id='priority"+notes_count+"' /></div>");
         }
     }
+}
+
+function deleteNote(item) {
+    if(confirm("Deleting: "+  $('#'+item).parent().find('[id^=ed_episode]').val())) {
+        var id = item.substr(6);
+        $.post('shownotesadmin/deleteNote', { id: id }, function(data) {
+            if (data) {
+                $('#ed_chooser').trigger('change');
+            }
+        });
+    }
+}
+
+function updateNote(item) {
+    var id = item.substr(6);
+    var note = $('#'+item).parent().find('[id^=ed_episode]').val();
+    var description_link = $('#'+item).parent().find('[id^=ed_link]').val();
+    var priority = $('#'+item).parent().find('[id^=ed_priority]').val();
+    $.post('shownotesadmin/updateNote',
+        {id : id, note: note, description_link: description_link, priority: priority},
+        function(data) {
+            if (data) {
+                alert("Notes database has beeen updated successfully.");
+            } else {
+                alert("There was a problem; your note might not have been updated.");
+            }
+    });
+       
 }

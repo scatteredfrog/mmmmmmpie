@@ -1,40 +1,7 @@
-[19-Apr-2015 00:00:10 Europe/Zurich] Descriptions: Array
-(
-    [0] => waoifjwaeoifjoi
-    [1] => ppppp
-    [2] => zzzzz
-)
-
-[19-Apr-2015 00:01:03 Europe/Zurich] Descriptions: Array
-(
-    [0] => waoifjwaeoifjoi
-    [1] => ppppp
-    [2] => zzzzz
-)
-
-[19-Apr-2015 00:01:40 Europe/Zurich] Descriptions: Array
-(
-    [0] => waoifjwaeoifjoi
-    [1] => ppppp
-    [2] => zzzzz
-)
-
-[19-Apr-2015 00:02:30 Europe/Zurich] Descriptions: Array
-(
-    [0] => waoifjwaeoifjoi
-    [1] => ppppp
-    [2] => zzzzz
-)
-
-[19-Apr-2015 01:09:05 Europe/Zurich] Descriptions: Array
-(
-    [0] => No Quarter Podcast
-    [1] => The Side Project Live (Jim's other podcast)
-    [2] => Pacmaniax (Sean's blog)
-)
-
-[19-Apr-2015 01:10:30 Europe/Zurich] Descriptions: Array
-(
-    [0] => Flirzelkwerp
-)
-
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP Fatal error:  Call to undefined method Shownotesadmin::shownotesadmin_model() in /Volumes/Projects/web/piefactory/_________________________________/controllers/Shownotesadmin.php on line 76
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP Stack trace:
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP   1. {main}() /Volumes/Projects/web/piefactory/index.php:0
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP   2. require_once() /Volumes/Projects/web/piefactory/index.php:292
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP   3. call_user_func_array:{/Volumes/Projects/web/piefactory/__________________________________/core/CodeIgniter.php:514}() /Volumes/Projects/web/piefactory/__________________________________/core/CodeIgniter.php:514
+[25-Apr-2015 06:32:35 Europe/Zurich] PHP   4. Shownotesadmin->deleteNote() /Volumes/Projects/web/piefactory/__________________________________/core/CodeIgniter.php:514
+[25-Apr-2015 06:33:12 Europe/Zurich] Query: 1

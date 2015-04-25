@@ -1,6 +1,6 @@
 body {
     background-color: #000;
-    font-family: 'Lucida Grande';
+    font-family: 'Lucida Grande', 'Trebuchet MS', Sans-Serif;
     color: #eee;
 }
 
@@ -91,4 +91,15 @@ hr {
     position: relative;
     width: 98.5%;
     padding-left: 7px;
+    top: -15px;
+}
+
+h4 {
+    background-color: #aeaeae;
+    color: #000076;
+    padding-bottom: 10px;
+    padding-left: 7px;
+    padding-top: 10px;
+    position: relative;
+    top: -10px;
 }

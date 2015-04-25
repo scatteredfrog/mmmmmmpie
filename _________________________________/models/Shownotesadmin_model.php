@@ -78,4 +78,54 @@ class Shownotesadmin_model extends CI_Model {
             }
         }        
     }
+    
+    public function retrieveEpisodes() {
+        $data = "<select id='ed_chooser'>";
+        $query = $this->db->select('episode_number,episode_topic')
+                ->from('show_info')
+                ->order_by('episode_number','DESC')
+                ->get();
+        foreach ($query->result() as $row) {
+            $data .= "<option>";
+            $data .= "Episode " . $row->episode_number . " - " . $row->episode_topic; 
+            $data .= "</option>";
+        }
+        $data .= "</select>";
+        return $data;
+    }
+    
+    public function retrieveNotes($episode_number) {
+        $query = $this->db->select('id,note,description_link,priority')
+                ->from('show_notes')
+                ->where('episode',$episode_number)
+                ->order_by('priority','ASC')
+                ->get();
+        $notes = array();
+        $c = 0;
+        foreach($query->result() as $row) {
+            $notes[$c]['id'] = $row->id;
+            $notes[$c]['note'] = $row->note;
+            $notes[$c]['description_link'] = $row->description_link;
+            $notes[$c]['priority'] = $row->priority;
+            $c++;
+        }
+        return $notes;
+    }
+    
+    public function killNotes($id) {
+        $query = $this->db->where('id',$id)
+                ->delete('show_notes');
+        return $query;
+    }
+    
+    public function changeNote($id, $note, $description_link, $priority) {
+        $data = array(
+            'note' => $note,
+            'description_link' => $description_link,
+            'priority' => $priority,
+        );
+        $query = $this->db->where('id',$id)
+                ->update('show_notes',$data);
+        return $query;
+    }
 }

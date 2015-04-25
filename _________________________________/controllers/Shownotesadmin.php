@@ -57,4 +57,31 @@ class Shownotesadmin extends CI_Controller {
             $episode_number = $this->input->post('episode_number');
             echo $this->shownotesadmin_model->checkEpisode($episode_number);
         }
+        
+        public function getEpisodes() {
+            $this->load->model('shownotesadmin_model');
+            echo $this->shownotesadmin_model->retrieveEpisodes();
+        }
+        
+        public function getNotes() {
+            $ep_opt = $this->input->post('episode');
+            $episode = explode(' ',$ep_opt);
+            $this->load->model('shownotesadmin_model');
+            echo json_encode($this->shownotesadmin_model->retrieveNotes($episode[1]));
+        }
+        
+        public function deleteNote() {
+            $id = $this->input->post('id');
+            $this->load->model('shownotesadmin_model');
+            echo $this->shownotesadmin_model->killNotes($id);
+        }
+        
+        public function updateNote() {
+            $id = $this->input->post('id');
+            $note = $this->input->post('note');
+            $description_link = $this->input->post('description_link');
+            $priority = $this->input->post('priority');
+            $this->load->model('shownotesadmin_model');
+            echo $this->shownotesadmin_model->changeNote($id, $note, $description_link, $priority);
+        }
 }

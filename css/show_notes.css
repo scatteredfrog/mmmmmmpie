@@ -8,7 +8,7 @@
 #add_episode_notes { display: none; }
 #click_to_submit_all { display: none; margin-left: auto; margin-right: auto; }
 
-#add_episode {
+#add_episode, #edit_notes {
     background-color: #fff;
     width: 787px;
     height: 343px;
@@ -20,3 +20,8 @@
 #log_out_click, #add_new_show_click, #add_notes_click, #edit_existing_notes_click {
     cursor: pointer;
 }
+
+#edit_notes_dropdown { position: relative; top: 5px; }
+#edit_label { padding-top: 10px; padding-bottom: 19px; }
+.edPriority { width: 50px; }
+.edLink, .episodeFz { width: 222px; }

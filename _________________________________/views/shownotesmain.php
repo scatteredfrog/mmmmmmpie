@@ -12,6 +12,14 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
+                <div id="edit_notes">
+                    <form id="edit_notes_form">
+                        <div class="formLabelRow" id="edit_label">
+                            <div class="labelDivWide">Select an episode:</div>
+                            <span id="edit_notes_dropdown"></span>
+                        </div>
+                    </form>
+                </div>
                 <div id="add_episode">
                     <form id="add_episode_form">
                         <div class="formLabelRow">

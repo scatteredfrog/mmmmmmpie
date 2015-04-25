@@ -15,6 +15,7 @@
     <div class="showNotes<?= $class_num?>" id="episode_<?=$episode_count?>">
         <?php
             echo heading('Episode '.$show['episode_number'] . ': '. $show['episode_topic'],3);
+            echo anchor($show['download_link'],heading('Download or listen here',4));
             foreach($show['notes'] as $key=>$note) {
                 echo "<div class='showNote'>" . anchor_popup($note['description_link'], $note['note']) . '</div>';
             }
