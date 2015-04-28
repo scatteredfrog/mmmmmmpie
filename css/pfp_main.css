@@ -28,6 +28,7 @@ a {
 #header_contact {
     float: left;
     margin-top: 15px;
+    width: 787px;
 }
 #twit1,#twit2,#eml1,#eml2,#eml3,#twit0,#eml0,#fbk1,#fbk0 {
     float: left;
@@ -40,12 +41,16 @@ a {
 }
 
 #eml1,#twit1,#fbk1 { margin-left: 15px; }
-#twit,#fbk { float: left; }
-#eml { float: right; }
+#eml { float: right; position: relative; top: 6px; }
+#twit, #fbok { float: left; }
+#twit { position: relative; left: 75px; top: 9px; }
 
-#fbk {
+
+#fbok {
     position: relative;
     text-align: center;
+    left: 124px;
+    top: 4px;
 }
 
 hr {
@@ -102,4 +107,20 @@ h4 {
     padding-top: 10px;
     position: relative;
     top: -10px;
+}
+
+#itunes > a {
+    display: inline-block;
+    overflow: hidden;
+    background: url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.png) no-repeat;
+    width: 110px;
+    height: 40px;
+}
+
+@media only screen{background-image:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg);}
+
+#itunes {
+    float: left;
+    position: relative;
+    left: 24px;
 }
