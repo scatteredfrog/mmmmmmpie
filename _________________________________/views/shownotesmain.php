@@ -12,7 +12,25 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
-                <div id="edit_notes">
+                <div id="add_notes_to_existing" class="hideMe">
+                    <div class="formLabelRow" id="existing_label">
+                        <div class="labelDivWide">Select an episode:</div>
+                        <span id="existing_dropdown"></span>
+                        <input type="button" id="existing_select" value="GO!" />
+                    </div>
+                    <div class="formLabelRow">
+                        <input type="button" value="Add More Notes" id="add_more_existing_notes" />
+                    </div>
+                    <form id="add_notes_to_existing_form">
+                        <div class="formLabelRow">
+                            <input type="text" id="add_existing_note" placeholder="Description" class="episodeFz" />
+                            <input type="text" id="add_existing_desc_link" placeholder="Link"   class="edLink" />
+                            <input type="number" id="add_existing_priority" class="edPriority" placeholder="Rank" />
+                            <input type="button" id="add_existing_button" value="Add" />
+                        </div>
+                    </form>
+                </div>
+                <div id="edit_notes" class="hideMe">
                     <form id="edit_notes_form">
                         <div class="formLabelRow" id="edit_label">
                             <div class="labelDivWide">Select an episode:</div>
@@ -21,7 +39,7 @@
                         </div>
                     </form>
                 </div>
-                <div id="add_episode">
+                <div id="add_episode" class="hideMe">
                     <form id="add_episode_form">
                         <div class="formLabelRow">
                             <div class="labelDivWide">Episode number:</div>

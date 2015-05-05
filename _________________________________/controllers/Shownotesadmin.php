@@ -59,8 +59,9 @@ class Shownotesadmin extends CI_Controller {
         }
         
         public function getEpisodes() {
+            $section = $this->input->post('section');
             $this->load->model('shownotesadmin_model');
-            echo $this->shownotesadmin_model->retrieveEpisodes();
+            echo $this->shownotesadmin_model->retrieveEpisodes($section);
         }
         
         public function getNotes() {
