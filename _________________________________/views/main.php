@@ -46,12 +46,3 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        $(document).ready(function() {
-            var width = $("#fbk").css('width');
-            width = parseInt(width.substring(0,width.length-2));
-            width = (787-width) / 2;
-            $('#fbk').css('left',width);
-        });
-    </script>
