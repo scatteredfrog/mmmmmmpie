@@ -79,14 +79,14 @@ class Shownotesadmin_model extends CI_Model {
         }        
     }
     
-    public function retrieveEpisodes() {
-        $data = "<select id='ed_chooser'>";
+    public function retrieveEpisodes($section) {
+        $data = $section == 'add' ? "<select id='add_chooser'>" : "<select id='ed_chooser'>";
         $query = $this->db->select('episode_number,episode_topic')
                 ->from('show_info')
                 ->order_by('episode_number','DESC')
                 ->get();
         foreach ($query->result() as $row) {
-            $data .= "<option>";
+            $data .= "<option id='option". $row->episode_number . "'>";
             $data .= "Episode " . $row->episode_number . " - " . $row->episode_topic; 
             $data .= "</option>";
         }

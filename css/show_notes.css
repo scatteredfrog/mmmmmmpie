@@ -8,7 +8,7 @@
 #add_episode_notes { display: none; }
 #click_to_submit_all { display: none; margin-left: auto; margin-right: auto; }
 
-#add_episode, #edit_notes {
+.hideMe {
     background-color: #fff;
     width: 787px;
     height: 343px;
@@ -21,7 +21,18 @@
     cursor: pointer;
 }
 
-#edit_notes_dropdown, #episode_select { position: relative; top: 5px; }
-#edit_label { padding-top: 10px; padding-bottom: 19px; }
+#edit_notes_dropdown, #episode_select, #existing_dropdown, #existing_select { position: relative; }
+#edit_label, #existing_label { padding-top: 10px; padding-bottom: 19px; }
 .edPriority { width: 50px; }
 .edLink, .episodeFz { width: 222px; }
+
+#add_notes_to_existing_form .episodeFz, #add_notes_to_existing_form .edLink, #add_notes_to_existing_form .edPriority {
+    font-family: sans-serif;
+    font-size: 12px;
+    text-align: left;
+}
+
+#add_notes_to_existing_form .episodeFz, #add_notes_to_existing_form .edLink { width: 255px; float: left; }
+
+#add_notes_to_existing_form .formLabelRow { clear: both; padding-left: 35px; padding-bottom: 0; padding-top: 7px; }
+#add_notes_to_existing_form input { margin: 5px; float: left }

@@ -1,5 +1,64 @@
-var notes_count = 0;
+var notes_count = ex_notes_count = 0;
 $(document).ready(function() {
+    
+    $('#add_notes_click').on('click',function() {
+        $('.hideMe').css('display','none');
+        $('#add_notes_to_existing').css('display','block');
+        $.post('shownotesadmin/getEpisodes',{ 'section' : 'add'},function(data) {
+            $('#existing_dropdown').html(data);
+            $('#add_chooser').on('change',function() {
+                $('.x').remove();
+                $.post('shownotesadmin/getNotes', {
+                    'episode' : $('#add_chooser').val(),
+                    }, function(data) {
+                        var sp = '<span class="episodeFz">';
+                        var sl = '<span class="edLink">';
+                        var si = '<span class="edPriority">';
+                        var sc = '</span>';
+                        var fr = '<div class="formLabelRow x">';
+                        var fc = '</div>';
+                        var s= ' &nbsp; ';
+                        var jdata = JSON.parse(data);
+                        var adata = [];
+                        for (var x in jdata) {
+                            adata.push(jdata[x]);
+                        }
+                        var ajlen = adata.length;
+                        if (adata.length) {
+                            row = fr;
+                            row += sp + "DESCRIPTION" + sc;
+                            row += sl + "LINK" + sc;
+                            row += si + "PRIORITY" + sc;
+                            row += fc;
+                            $('#add_notes_to_existing_form').append(row);
+                            for (var y = 0; y < ajlen; y++) {
+                                if (adata[y]['description_link'] == "") {
+                                    adata[y]['description_link'] = "(n/a)";
+                                }
+                                var row = "";
+                                row += fr + sp + adata[y]['note'] + sc;
+                                row += s + sl + adata[y]['description_link'] +sc;
+                                row += s + si + adata[y]['priority'] + sc;
+                                row += fc;
+                                $('#add_notes_to_existing_form').append(row);
+                            }
+                        }
+                        $('.delete').each(function() {
+                            $(this).on('click', function() {
+                                deleteNote($(this).attr('id'));
+                            });
+                        });
+                        $('.update').each(function() {
+                            $(this).on('click', function() {
+                                updateNote($(this).attr('id'));
+                            });
+                        })
+                    }
+                );
+            });
+        });
+    });
+    
     $('#add_notes_button').on('click',function() {
         $.post('shownotesadmin/login',{'username' : $('#user_name').val(), 'password': $('#password').val() }, function(data) {
             if (data === 'flirzelkwerp') {
@@ -21,7 +80,7 @@ $(document).ready(function() {
         $.post('shownotesadmin/getCurrentEpisode',{},function(data) {
             $('#episode_number').val(data);
         });
-        $('#edit_notes').css('display','none');
+        $('.hideMe').css('display','none');
         $('#add_episode').css('display','block');
         $('[id^=desc]').each(function() {
             $(this).val('');
@@ -33,7 +92,7 @@ $(document).ready(function() {
     
     $('#log_out_click').on('click',function() {
         $.post('shownotesadmin/logOut',{},function() {
-            $('#add_episode').css('display','none');
+            $('.hideMe').css('display','none');
             $('#add_notes_form').removeClass('formVisible');
             $('#add_notes_login').addClass('formVisible');
         });
@@ -149,7 +208,7 @@ $(document).ready(function() {
     });
     
     $('#edit_existing_notes_click').on('click',function() {
-        $('#add_episode').css('display','none');
+        $('.hideMe').css('display','none');
         $.post('shownotesadmin/getEpisodes',{},function(data) {
             $('#edit_notes_dropdown').html(data);
             $('#ed_chooser').on('change',function() {
@@ -204,6 +263,53 @@ $(document).ready(function() {
     
     $('#episode_select').on('click', function() {
         $('#ed_chooser').trigger('change');
+    });
+    
+    $('#existing_select').on('click',function() {
+        $('#add_chooser').trigger('change');
+    });
+    
+    $('#add_more_existing_notes').on('click', function() {
+        $('#add_existing_button').val("Add ALL notes");
+        $("#add_notes_to_existing_form").append("<div class='formLabelRow'><input type='text' id='add_existing_note"+ex_notes_count+"' class='episodeFz' placeholder='Description' /> <input type='text' id='add_existing_desc_link"+ex_notes_count+"' placeholder='Link' class='edLink' /> <input type='number' id='add_existing_priority"+ex_notes_count+"' placeholder='Rank' class='edPriority' /></div>");
+        ex_notes_count++;
+    });
+    
+    $('#add_existing_button').on('click',function() {
+        var add_description = [];
+        var add_link = [];
+        var add_priority = [];
+        $('[id^=add_existing_note]').each(function () {
+            add_description.push($(this).val());
+        });
+        $('[id^=add_existing_desc_link]').each(function () {
+            add_link.push($(this).val());
+        });
+        $('[id^=add_existing_priority]').each(function () {
+            add_priority.push($(this).val());
+        });
+        $.post('shownotesadmin/submit_notes', {
+            'episode_number': $('#add_chooser option:selected').attr('id').substr(6),
+            'description': add_description,
+            'description_link': add_link,
+            'priority': add_priority,
+            'is_everything' : false,
+            }, function(data) {
+                switch(data) {
+                    case '1':
+                    case '3':
+                        $('#existing_select').trigger('click');
+                        break;
+                    case '2':
+                        alert("There was a problem adding the info to the database.");
+                        break;
+                    default:
+                        alert("Hmmmm....");
+                        console.log(data);
+                        break;
+                }
+            }
+        );
     });
 });
 
