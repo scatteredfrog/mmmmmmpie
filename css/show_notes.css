@@ -1,5 +1,6 @@
 #add_show_notes_heading { float: left; }
 #add_notes_form,#add_notes_login { display: none; }
+#add_notes_login { float: left; }
 .formVisible { display: block!important; }
 .labelDiv { width: 136px; float: left; }
 .labelDivWide { width: 330px; float: left; }
