@@ -3,11 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Latestshow extends CI_Model {
 
-        public function getLatestShow() {
+        public function getLatestShow($limit = null) {
             $data['episode'] = array();
             $query = $this->db->select('episode_number,episode_topic,download_link')
                     ->from('show_info')
                     ->order_by('episode_number', 'DESC')
+                    ->limit($limit)
                     ->get();
             $result_count = 0;
             foreach ($query->result() as $row) {
@@ -15,8 +16,10 @@ class Latestshow extends CI_Model {
                 $data['episode'][$result_count]['episode_topic'] = $row->episode_topic;
                 $data['episode'][$result_count]['download_link'] = $row->download_link;
                 $data['episode'][$result_count]['notes'] = $this->getShowNotes($row->episode_number);
+                $data['episode'][$result_count]['class_num'] = $result_count % 2 === 0 ? 0 : 1;
                 $result_count++;
             }
+            $latest_show = $data['episode'][0];
             return $data;
         }
         

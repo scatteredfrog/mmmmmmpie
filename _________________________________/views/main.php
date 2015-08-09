@@ -28,20 +28,27 @@
             <div id="header_image">
 
             </div>
-            <div id="header_contact">
-                <div id="soc_row">
-                    <div id="itunes">
-                        <a href="https://itunes.apple.com/us/podcast/pie-factory-podcast/id988509945?mt=2&uo=6&at=&ct=" target="itunes_store"></a>
-                    </div>
-                    <div id="twit">
-                        <div id="twit0"><a href="https://twitter.com/PieFactoryPFP" class="twitter-follow-button" data-show-count="false">Follow @PieFactoryPFP</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div><br />
-                    </div>
-                    <div id="fbok">
-                        <div class="fb-like" data-href="https://www.facebook.com/PieFactoryPodcast" data-layout="button" data-action="like" data-show-faces="true"></div>
-                    </div>
+            <div id="latest_show">
+                <?php
+                    echo heading('LATEST EPISODE:',2);
+                    echo '<div id="latest_deets">Episode '.$episode[0]['episode_number'] . ': '. $episode[0]['episode_topic'] . '<br />';
+                    echo anchor($episode[0]['download_link'],'Click here to download or listen');
+                    echo '</div>';
+                ?>
+                <div id="itunes">
+                    <a href="https://itunes.apple.com/us/podcast/pie-factory-podcast/id988509945?mt=2&uo=6&at=&ct=" target="itunes_store"></a>
                 </div>
-                <div id="eml">
-                        <div id="eml0">E-mail: </div><div id="eml1">pie</div><div id="eml2">factory@fab4it.co</div><div id="eml3">m</div><br />
+                <div id="twit">
+                    <div id="twit0"><a href="https://twitter.com/PieFactoryPFP" class="twitter-follow-button" data-show-count="false">Follow @PieFactoryPFP</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div><br />
+                </div>
+                <div id="fbok">
+                    <div class="fb-like" data-href="https://www.facebook.com/PieFactoryPodcast" data-layout="button" data-action="like" data-show-faces="true"></div>
+                </div>
+                <div id="wrdpr">
+                    <a href="http://piefactorypodcast.wordpress.com" target="_new"><img src="/images/wordpress_pf_logo.png" /></a>
+                </div>
+                <div id="email_row">
+                    <div id="eml0">E-mail: </div><div id="eml1">pie</div><div id="eml2">factory@fab4it.co</div><div id="eml3">m</div><br />
                 </div>
             </div>
         </div>

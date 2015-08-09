@@ -1,5 +1,5 @@
 body {
-    background-color: #000;
+    background-color: #2a2a2a;
     font-family: 'Lucida Grande', 'Trebuchet MS', Sans-Serif;
     color: #eee;
 }
@@ -8,9 +8,7 @@ a {
     color: gold;
 }
 
-.containerCenter {
-    text-align: center;
-}
+.containerCenter {    text-align: center; }
 .headerWrapper {
     margin-left: auto;
     margin-right: auto;
@@ -20,9 +18,9 @@ a {
     width: 787px;
 }
 #header_image {
-    background: url('/images/pfp_header_image.jpg');
+    background: url('/images/pfp_header_image_sq.jpg');
     height: 337px;
-    width: 787px;
+    width: 337px;
     float: left;
 }
 #header_contact {
@@ -30,8 +28,12 @@ a {
     margin-top: 15px;
     width: 787px;
 }
-#twit1,#twit2,#eml1,#eml2,#eml3,#twit0,#eml0,#fbk1,#fbk0 {
-    float: left;
+#twit1,#twit2,#eml0,#eml1,#eml2,#eml3,#twit0,#fbk1,#fbk0 { float: left; }
+#email_row { 
+    clear: both;
+    left: 74px;
+    position: relative;
+    padding-bottom: 6px;
 }
 #eml1,#eml3,#twit2 {
     user-select: none;
@@ -43,13 +45,13 @@ a {
 #eml1,#twit1,#fbk1 { margin-left: 15px; }
 #eml { float: right; position: relative; top: 6px; }
 #twit, #fbok { float: left; }
-#twit { position: relative; left: 75px; top: 9px; }
+#twit { position: relative; left: 41px; top: 9px; }
 
 
 #fbok {
     position: relative;
     text-align: center;
-    left: 124px;
+    left: 59px;
     top: 4px;
 }
 
@@ -112,7 +114,7 @@ h4 {
 #itunes > a {
     display: inline-block;
     overflow: hidden;
-    background: url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.png) no-repeat;
+    background: url('/images/badge_itunes-lrg.png') no-repeat;
     width: 110px;
     height: 40px;
 }
@@ -123,4 +125,30 @@ h4 {
     float: left;
     position: relative;
     left: 24px;
+}
+
+#latest_show {
+    float: left;
+    width: 445px;
+    position: relative;
+    left: 60px;
+    top: 63px;
+    border-color: #101010;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 28px;
+    background-color: #363636;
+}
+
+#latest_show h2, #latest_deets {
+    top: -20px;
+    position: relative;
+}
+
+#wrdpr {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    left: 75px;
+    float: left;
 }
