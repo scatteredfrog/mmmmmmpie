@@ -86,8 +86,12 @@ class Shownotesadmin_model extends CI_Model {
                 ->order_by('episode_number','DESC')
                 ->get();
         foreach ($query->result() as $row) {
+            $epnum = (int)$row->episode_number;
+            if ($epnum > 15) {
+                $epnum--;
+            }
             $data .= "<option id='option". $row->episode_number . "'>";
-            $data .= "Episode " . $row->episode_number . " - " . $row->episode_topic; 
+            $data .= "Episode " . $epnum . " - " . $row->episode_topic; 
             $data .= "</option>";
         }
         $data .= "</select>";

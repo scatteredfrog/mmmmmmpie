@@ -8,6 +8,8 @@
 #add_episode_form { padding-top: 12px; }
 #add_episode_notes { display: none; }
 #click_to_submit_all { display: none; margin-left: auto; margin-right: auto; }
+#actual_episode { font-size: 13px; }
+#episode_number { width: 46px; }
 
 .hideMe {
     background-color: #fff;

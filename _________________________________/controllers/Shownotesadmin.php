@@ -67,6 +67,14 @@ class Shownotesadmin extends CI_Controller {
         public function getNotes() {
             $ep_opt = $this->input->post('episode');
             $episode = explode(' ',$ep_opt);
+            $episode[1] = (int)$episode[1];
+            if ($episode[1] > 15) {
+                $episode[1]++;
+            } else {
+                if (stristr($ep_opt, 'part 2') && $episode[1] == 15) {
+                    $episode[1]++;
+                }
+            }
             $this->load->model('shownotesadmin_model');
             echo json_encode($this->shownotesadmin_model->retrieveNotes($episode[1]));
         }

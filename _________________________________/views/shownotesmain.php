@@ -44,6 +44,7 @@
                         <div class="formLabelRow">
                             <div class="labelDivWide">Episode number:</div>
                             <input type="number" id="episode_number" value="<?=$new_episode?>"/>
+                            <span id="actual_episode"></span>
                         </div>
                         <div class="formLabelRow">
                             <div class="labelDivWide">Episode topic:</div>
@@ -94,3 +95,15 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#episode_number').on('change', function() {
+                var epnum = parseInt($('#episode_number').val());
+                if (epnum === 16) {
+                    $('#actual_episode').html("(actually ep. 15 pt. 2)");
+                } else if (epnum > 16) {
+                    $('#actual_episode').html("(actually ep. " + (--epnum) + ")");
+                }
+            });
+        });
+    </script>

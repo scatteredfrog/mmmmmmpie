@@ -12,7 +12,12 @@ class Latestshow extends CI_Model {
                     ->get();
             $result_count = 0;
             foreach ($query->result() as $row) {
-                $data['episode'][$result_count]['episode_number'] = $row->episode_number;
+                $ep_number = $row->episode_number;
+                if ($row->episode_number > 15) {
+                    $data['episode'][$result_count]['upper'] = true;
+                    $ep_number--;
+                }
+                $data['episode'][$result_count]['episode_number'] = $ep_number;
                 $data['episode'][$result_count]['episode_topic'] = $row->episode_topic;
                 $data['episode'][$result_count]['download_link'] = $row->download_link;
                 $data['episode'][$result_count]['notes'] = $this->getShowNotes($row->episode_number);
