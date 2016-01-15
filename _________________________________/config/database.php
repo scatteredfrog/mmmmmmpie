@@ -80,12 +80,15 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Junk')) {
+$rt = $_SERVER['DOCUMENT_ROOT'];
+$hs = $_SERVER['HTTP_HOST'];
+
+if (substr($hs,0,5) === 'local' && stristr($rt,'Junk')) {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
     $db['default']['password'] = '3legsramon';
     $db['default']['database'] = 'pfpdb';
-} else if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Projects')) {
+} else if (substr($hs,0,5) === 'local' && (stristr($rt,'Junk') || stristr($rt,'Coding'))) {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
     $db['default']['password'] = 'sqflirzel';

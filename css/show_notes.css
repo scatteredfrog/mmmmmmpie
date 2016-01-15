@@ -1,4 +1,4 @@
-#add_show_notes_heading { float: left; }
+#add_show_notes_heading { float: left; clear: both; }
 #add_notes_form,#add_notes_login { display: none; }
 #add_notes_login { float: left; }
 .formVisible { display: block!important; }
@@ -10,6 +10,20 @@
 #click_to_submit_all { display: none; margin-left: auto; margin-right: auto; }
 #actual_episode { font-size: 13px; }
 #episode_number { width: 46px; }
+.uHead { font-weight: bold; }
+
+.unpubCheck {
+    float: left;
+    width: 100px;
+    text-align: center;
+    clear: both;
+}
+
+.unpubNumber { 
+    float: left; 
+    width: 568px;
+    text-align: left;
+}
 
 .hideMe {
     background-color: #fff;
@@ -20,7 +34,7 @@
     overflow: scroll;
 }
 
-#log_out_click, #add_new_show_click, #add_notes_click, #edit_existing_notes_click {
+#log_out_click, #add_new_show_click, #add_notes_click, #edit_existing_notes_click, #unpublished_episodes_click {
     cursor: pointer;
 }
 

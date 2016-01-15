@@ -32,8 +32,9 @@ class Shownotesadmin extends CI_Controller {
             $episode_topic = $this->input->post('episode_topic');
             $episode_number = $this->input->post('episode_number');
             $download_link = $this->input->post('download_link');
+            $publish_this_podcast = $this->input->post('publish_this_podcast');
             $this->load->model('shownotesadmin_model');
-            return $this->shownotesadmin_model->addEpisode($episode_number, $episode_topic, $download_link);
+            return $this->shownotesadmin_model->addEpisode($episode_number, $episode_topic, $download_link, $publish_this_podcast);
         }
         
         public function submit_notes() {
@@ -92,5 +93,29 @@ class Shownotesadmin extends CI_Controller {
             $priority = $this->input->post('priority');
             $this->load->model('shownotesadmin_model');
             echo $this->shownotesadmin_model->changeNote($id, $note, $description_link, $priority);
+        }
+        
+        public function getUnpublished() {
+            $this->load->model('shownotesadmin_model');
+            $unpublishedList = $this->shownotesadmin_model->getUnpublishedEpisodes();
+            $returnHTML = '<div class="formLabelRow"><div class="unpubCheck uHead">Publish?';
+            $returnHTML .= '</div><div class="unpubNumber uHead">Episode topic</div>';
+            $returnHTML .= '<div><button type="button" onclick="buttPub()">PUBLISH</button></div>';
+            $returnHTML .= '</div>';
+            foreach($unpublishedList as $k => $v) {
+                $returnHTML .= '<div class="formLabelRow"><div class="unpubCheck">';
+                $returnHTML .= '<input type="checkbox" id="unpub_' . $v['id'] . '" /></div>';
+                $returnHTML .= '<div class="unpubNumber">';
+                $returnHTML .= 'Episode ' . $v['episode_number'] . ': ' . $v['episode_topic'];
+                $returnHTML .= '</div></div>';
+            }
+            echo $returnHTML;
+        }
+        
+        public function publishEpisodes() {
+            $episode_ids = explode('~', $this->input->post('toPublish'));
+            $this->load->model('shownotesadmin_model');
+            $response = $this->shownotesadmin_model->publishTheseEpisodes($episode_ids);
+            echo $response;
         }
 }

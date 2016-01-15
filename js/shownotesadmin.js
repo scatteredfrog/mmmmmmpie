@@ -91,6 +91,14 @@ $(document).ready(function() {
         });
     });
     
+    $('#unpublished_episodes_click').on('click', function() {
+        $.post('shownotesadmin/getUnpublished', {}, function(data) {
+            $('#unpublished_list').html(data);
+        });
+        $('.hideMe').css('display','none');
+        $('#unpublished_episodes').css('display','block');
+    });
+    
     $('#log_out_click').on('click',function() {
         $.post('shownotesadmin/logOut',{},function() {
             $('.hideMe').css('display','none');
@@ -128,7 +136,10 @@ $(document).ready(function() {
             error += "Invalid topic!\n";
         }
         if ($('#download_link').val().substr(0,7) !== 'http://') {
-            error += "Invalid download link!";
+            error += "Invalid download link!\n";
+        }
+        if ($('#download_link').val().length < 8 && $('#publish').prop('checked')) {
+            error += "Can't publish without a URL!";
         }
         if (error !== '') {
             alert(error);
@@ -137,7 +148,8 @@ $(document).ready(function() {
             $.post('shownotesadmin/submit_episode', {
                     'episode_number' : $('#episode_number').val(),
                     'episode_topic'  : $('#episode_topic').val(),
-                    'download_link'  : $('#download_link').val()
+                    'download_link'  : $('#download_link').val(),
+                    'publish_this_podcast' : $('#publish').prop('checked')
                 },function(data) {
                     switch(data) {
                         case '3':
@@ -306,7 +318,6 @@ $(document).ready(function() {
                         break;
                     default:
                         alert("Hmmmm....");
-                        console.log(data);
                         break;
                 }
             }
@@ -359,4 +370,22 @@ function updateNote(item) {
             }
     });
        
+}
+
+function buttPub() {
+    if ($('[id^="unpub_"]').filter(':checked').length < 1) {
+        alert("But you haven't checked anything!");
+    } else {
+        var itemsToPublish = '';
+        $('[id^="unpub_').each(function() {
+            if ($(this).prop('checked')) {
+                itemsToPublish += $(this).attr('id').substring(6) + '~';
+            }
+        });
+        itemsToPublish = itemsToPublish.slice(0,-1);
+        var post_data = { 'toPublish' : itemsToPublish };
+        $.post('shownotesadmin/publishEpisodes', post_data, function() {
+            $('#unpublished_episodes').css('display','none');
+        });
+    }
 }

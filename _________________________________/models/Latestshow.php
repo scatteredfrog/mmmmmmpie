@@ -7,6 +7,7 @@ class Latestshow extends CI_Model {
             $data['episode'] = array();
             $query = $this->db->select('episode_number,episode_topic,download_link')
                     ->from('show_info')
+                    ->where('publish','1')
                     ->order_by('episode_number', 'DESC')
                     ->limit($limit)
                     ->get();

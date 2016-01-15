@@ -12,6 +12,13 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
+                <div id="unpublished_episodes" class="hideMe">
+                    <form id="unpublished_form">
+                        <div id="unpublished_list">
+                            
+                        </div>
+                    </form>
+                </div>
                 <div id="add_notes_to_existing" class="hideMe">
                     <div class="formLabelRow" id="existing_label">
                         <div class="labelDivWide">Select an episode:</div>
@@ -53,6 +60,10 @@
                         <div class="formLabelRow">
                             <div class="labelDivWide">Download link:</div>
                             <input type="text" id="download_link" />
+                        </div>
+                        <div class="formLabelRow">
+                            <div class="labelDivWide">Publish:</div>
+                            <input type="checkbox" id="publish" />
                         </div>
                         <div class="formLabelRow">
                             <input type="button" id="click_to_add_notes" value="Click to add notes" />

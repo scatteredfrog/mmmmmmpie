@@ -43,15 +43,17 @@ class Shownotesadmin_model extends CI_Model {
         return '1';
     }
     
-    public function addEpisode($episode_number, $episode_topic, $download_link) {
+    public function addEpisode($episode_number, $episode_topic, $download_link, $publish) {
         $data = 0;
         if ($this->checkEpisode($episode_number) === '3') {
             echo '3';
             return;
-        }        
+        }
+        $publish = $publish ? 1 : 0;
         $this->db->set('episode_number', $episode_number);
         $this->db->set('episode_topic', $episode_topic);
         $this->db->set('download_link', $download_link);
+        $this->db->set('publish', $publish);
         if ($this->db->insert('show_info')) {
             $data = 1;
         }
@@ -77,6 +79,34 @@ class Shownotesadmin_model extends CI_Model {
                 return;
             }
         }        
+    }
+    
+    public function getUnpublishedEpisodes() {
+        $query = $this->db->select('id,episode_number,episode_topic')
+                ->from('show_info')
+                ->where('publish',null)
+                ->order_by('episode_number', 'DESC')
+                ->get();
+        $c = 0;
+        foreach ($query->result() as $row) {
+            $epnum = (int) $row->episode_number;
+            if ($epnum >15) {
+                $epnum--;
+            }
+            $data[$c]['id'] = $row->id;
+            $data[$c]['episode_number'] = $epnum;
+            $data[$c]['episode_topic'] = $row->episode_topic;
+            $c++;
+        }
+        
+        return $data;
+    }
+    
+    public function publishTheseEpisodes($data) {
+        $query = $this->db->set('publish','1')
+                 ->where_in('id',$data)
+                 ->update('show_info');
+        $result = $query->result();
     }
     
     public function retrieveEpisodes($section) {

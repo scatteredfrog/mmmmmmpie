@@ -12,6 +12,7 @@
         <span id="add_new_show_click">ADD NEW SHOW</span> | 
         <span id="add_notes_click">ADD NOTES TO EXISTING SHOW</span> | 
         <span id="edit_existing_notes_click">EDIT EXISTING NOTES</span> | 
+        <span id="unpublished_episodes_click">UNPUBLISHED EPISODES</span> | 
         <span id="log_out_click">LOG OUT</span>
     </div>
     <div id="add_notes_login" <?php if (!$this->session->username) { ?>class="formVisible" <?php } ?>>
