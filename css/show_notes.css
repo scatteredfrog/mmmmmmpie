@@ -10,7 +10,36 @@
 #click_to_submit_all { display: none; margin-left: auto; margin-right: auto; }
 #actual_episode { font-size: 13px; }
 #episode_number { width: 46px; }
+#choose_game, #submit_rating_change, #cancel_rating_change { cursor: pointer; }
 .uHead { font-weight: bold; }
+#game_stats { display: none; }
+#gs_episode { width: 198px; }
+#submit_rating_change, .ratingEdit, .ratingSubmit { display: none; }
+#submit_rating_change { clear: none; }
+
+.ratingButton {
+    clear: both;
+    position: relative;
+    float:left;
+    left:300px;
+}
+
+.gameVal {
+    float: left;
+    left: 340px;
+    position: relative;
+}
+
+.gameHeading {
+    position: relative;
+    left: 220px;
+    float: left;
+    clear: both;
+    font-weight: bold;
+    width: 139px;
+    height: 28px;
+    text-align: left;
+}
 
 .unpubCheck {
     float: left;
@@ -34,10 +63,13 @@
     overflow: scroll;
 }
 
-#log_out_click, #add_new_show_click, #add_notes_click, #edit_existing_notes_click, #unpublished_episodes_click {
-    cursor: pointer;
+#game_list hr {
+    padding-top: 0px;
+    color: #000;
+    width: 626px;
 }
 
+.clickMenuOption { cursor: pointer; }
 #edit_notes_dropdown, #episode_select, #existing_dropdown, #existing_select { position: relative; }
 #edit_label, #existing_label { padding-top: 10px; padding-bottom: 19px; }
 .edPriority { width: 50px; }

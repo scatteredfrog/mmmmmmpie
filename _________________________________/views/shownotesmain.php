@@ -12,10 +12,50 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
+                <div id="game_ratings" class="hideMe">
+                    <form id="game_ratings_form">
+                        <div id="game_list">
+                            <div class="formLabelRow"></div>
+                            <div class="formLabelRow">
+                                <span id="game_dropdown"></span>
+                                <button type="button" id="choose_game" onclick="goGame()">GO</button>
+                            </div>
+                            <hr />
+                            <div class="formLabelRow"></div>
+                            <div class="formLabelRow"></div>
+                            <div class="formLabelRow">
+                                <div id="game_stats">
+                                    <div class="formLabelRow">
+                                        <div class="gameHeading">Game:</div>
+                                        <div id="gs_name" class="gameVal"></div>
+                                    </div>
+                                    <div class="formLabelRow">
+                                        <div class="gameHeading">Jim's rating:</div>
+                                        <div id="gs_jim" class="gameVal ratingVal"></div>
+                                        <div class="gameVal ratingEdit"><input id="jim_rating" type="number" max="5" min="0" /></div>
+                                    </div>
+                                    <div class="formLabelRow">
+                                        <div class="gameHeading">Sean's rating:</div>
+                                        <div id="gs_sean" class="gameVal ratingVal"></div>
+                                        <div class="gameVal ratingEdit"><input id="sean_rating" type="number" max="5" min="0" /></div>
+                                    </div>
+                                    <div class="formLabelRow">
+                                        <div class="gameHeading">Episode:</div>
+                                        <div id="gs_episode" class="gameVal"></div>
+                                    </div>
+                                    <div class="formLabelRow">
+                                        <button type="button" id="change_rating" class="ratingButton" onclick="changeRating()">Change Rating</button>
+                                        <button type="button" id="cancel_rating_change" class="ratingButton ratingSubmit" onclick="cancelRatingChange()">Cancel Rating Change</button>
+                                        <button type="button" id="submit_rating_change" class="ratingButton ratingSubmit" onclick="submitRatingChange()">Submit Rating Change</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div id="unpublished_episodes" class="hideMe">
                     <form id="unpublished_form">
                         <div id="unpublished_list">
-                            
                         </div>
                     </form>
                 </div>

@@ -1,7 +1,15 @@
 var notes_count = ex_notes_count = 0;
 $(document).ready(function() {
     
-    $('#add_notes_click').on('click',function() {
+    $('#game_ratings_click').on('click touchstart', function() {
+        $('.hideMe').css('display','none');
+        $('#game_ratings').css('display', 'block');
+        $.post('shownotesadmin/getGames', {}, function(data) {
+            $('#game_dropdown').html(data);
+        });
+    });
+    
+    $('#add_notes_click').on('click touchstart',function() {
         $('.hideMe').css('display','none');
         $('#add_notes_to_existing').css('display','block');
         $.post('shownotesadmin/getEpisodes',{ 'section' : 'add'},function(data) {
@@ -60,7 +68,7 @@ $(document).ready(function() {
         });
     });
     
-    $('#add_notes_button').on('click',function() {
+    $('#add_notes_button').on('click touchstart',function() {
         $.post('shownotesadmin/login',{'username' : $('#user_name').val(), 'password': $('#password').val() }, function(data) {
             if (data === 'flirzelkwerp') {
                 alert("INVALID LOGIN");
@@ -77,7 +85,7 @@ $(document).ready(function() {
         }
     });
     
-    $('#add_new_show_click').on('click',function() {
+    $('#add_new_show_click').on('click touchstart',function() {
         $.post('shownotesadmin/getCurrentEpisode',{},function(data) {
             $('#episode_number').val(data);
         });
@@ -91,7 +99,7 @@ $(document).ready(function() {
         });
     });
     
-    $('#unpublished_episodes_click').on('click', function() {
+    $('#unpublished_episodes_click').on('click touchstart', function() {
         $.post('shownotesadmin/getUnpublished', {}, function(data) {
             $('#unpublished_list').html(data);
         });
@@ -99,7 +107,7 @@ $(document).ready(function() {
         $('#unpublished_episodes').css('display','block');
     });
     
-    $('#log_out_click').on('click',function() {
+    $('#log_out_click').on('click touchstart',function() {
         $.post('shownotesadmin/logOut',{},function() {
             $('.hideMe').css('display','none');
             $('#add_notes_form').removeClass('formVisible');
@@ -107,7 +115,7 @@ $(document).ready(function() {
         });
     });
     
-    $('#click_to_add_notes').on('click',function() {
+    $('#click_to_add_notes').on('click touchstart',function() {
         if ($('#click_to_submit').css('display') !== 'none') {
             $.post('shownotesadmin/checkEpisode',  {
                     'episode_number' : $('#episode_number').val()
@@ -125,7 +133,7 @@ $(document).ready(function() {
         }
     });
     
-    $('#click_to_submit').on('click',function() {
+    $('#click_to_submit').on('click touchstart',function() {
         var error = '';
         
         // ERROR CHECKING
@@ -166,7 +174,7 @@ $(document).ready(function() {
         }
     });
     
-    $('#click_to_submit_all').on('click',function() {
+    $('#click_to_submit_all').on('click touchstart',function() {
         var description = new Array();
         var description_link = new Array();
         var priority = new Array();
@@ -220,7 +228,7 @@ $(document).ready(function() {
         );
     });
     
-    $('#edit_existing_notes_click').on('click',function() {
+    $('#edit_existing_notes_click').on('click touchstart',function() {
         $('.hideMe').css('display','none');
         $.post('shownotesadmin/getEpisodes',{},function(data) {
             $('#edit_notes_dropdown').html(data);
@@ -274,21 +282,21 @@ $(document).ready(function() {
         $('#edit_notes').css('display','block');
     });
     
-    $('#episode_select').on('click', function() {
+    $('#episode_select').on('click touchstart', function() {
         $('#ed_chooser').trigger('change');
     });
     
-    $('#existing_select').on('click',function() {
+    $('#existing_select').on('click touchstart',function() {
         $('#add_chooser').trigger('change');
     });
     
-    $('#add_more_existing_notes').on('click', function() {
+    $('#add_more_existing_notes').on('click touchstart', function() {
         $('#add_existing_button').val("Add ALL notes");
         $("#add_notes_to_existing_form").append("<div class='formLabelRow'><input type='text' id='add_existing_note"+ex_notes_count+"' class='episodeFz' placeholder='Description' /> <input type='text' id='add_existing_desc_link"+ex_notes_count+"' placeholder='Link' class='edLink' /> <input type='number' id='add_existing_priority"+ex_notes_count+"' placeholder='Rank' class='edPriority' /></div>");
         ex_notes_count++;
     });
     
-    $('#add_existing_button').on('click',function() {
+    $('#add_existing_button').on('click touchstart',function() {
         var add_description = [];
         var add_link = [];
         var add_priority = [];
@@ -388,4 +396,46 @@ function buttPub() {
             $('#unpublished_episodes').css('display','none');
         });
     }
+}
+
+function changeRating() {
+    $('#change_rating,.ratingVal').css('display','none');
+    $('#submit_rating_change,.ratingEdit,.ratingSubmit').css('display','block');
+}
+
+function cancelRatingChange() {
+    $('#change_rating,.ratingVal').css('display','block');
+    $('#submit_rating_change,.ratingEdit,.ratingSubmit').css('display','none');
+}
+
+function submitRatingChange() {
+    var post_data = {
+        'id' : $('#game_chooser').val(),
+        'jim' : $('#jim_rating').val(),
+        'sean' : $('#sean_rating').val()
+    };
+    
+    $.post('shownotesadmin/submitRatingsChange', post_data, function(data) {
+        if (data) {
+            alert('Rating successfully updated! woohoo!');
+            cancelRatingChange();
+            $('#gs_jim').text(post_data.jim);
+            $('#gs_sean').text(post_data.sean);
+        }
+    });
+}
+
+function goGame() {
+    cancelRatingChange();
+    var post_data = {'id': $('#game_chooser').val()};
+    $.post('shownotesadmin/showRatings', post_data, function(data) {
+        $('#gs_name').text(data.game_title);
+        $('#gs_jim').text(data.jim_rating);
+        $('#jim_rating').val(data.jim_rating);
+        $('#gs_sean').text(data.sean_rating);
+        $('#sean_rating').val(data.sean_rating);
+        $('#gs_episode').text(data.episode_number+ ': ' + data.episode_topic);
+        $('#game_id').val(data.id);
+        $('#game_stats').css('display','block');
+    },'json');
 }

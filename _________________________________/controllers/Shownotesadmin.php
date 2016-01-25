@@ -19,6 +19,20 @@ class Shownotesadmin extends CI_Controller {
             $this->session->sess_destroy();
         }
         
+        public function showRatings() {
+            $id = $this->input->post('id');
+            echo json_encode($_SESSION['game_ratings'][$id]);
+        }
+        
+        public function submitRatingsChange() {
+            $id = $this->input->post('id');
+            $jim = $this->input->post('jim');
+            $sean = $this->input->post('sean');
+            $this->load->model('shownotesadmin_model');
+            $success = $this->shownotesadmin_model->updateRatings($id,$jim,$sean);
+            echo $success;
+        }
+        
         public function login() {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -57,6 +71,19 @@ class Shownotesadmin extends CI_Controller {
             $this->load->model('shownotesadmin_model');
             $episode_number = $this->input->post('episode_number');
             echo $this->shownotesadmin_model->checkEpisode($episode_number);
+        }
+        
+        public function azerBaijan() {
+            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+               $this->load->view('azerbaijan');
+            } else {
+                $this->load->view('main');
+            }
+        }
+        
+        public function getGames() {
+            $this->load->model('shownotesadmin_model');
+            echo $this->shownotesadmin_model->retrieveGames();
         }
         
         public function getEpisodes() {

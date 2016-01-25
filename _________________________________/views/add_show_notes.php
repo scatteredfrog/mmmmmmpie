@@ -9,11 +9,12 @@
         echo heading('Show Notes Admin');
     ?>
     <div id="add_notes_form" <?php if ($this->session->username) { ?>class="formVisible" <?php } ?>>
-        <span id="add_new_show_click">ADD NEW SHOW</span> | 
-        <span id="add_notes_click">ADD NOTES TO EXISTING SHOW</span> | 
-        <span id="edit_existing_notes_click">EDIT EXISTING NOTES</span> | 
-        <span id="unpublished_episodes_click">UNPUBLISHED EPISODES</span> | 
-        <span id="log_out_click">LOG OUT</span>
+        <span id="add_new_show_click" class="clickMenuOption">ADD NEW SHOW</span> | 
+        <span id="add_notes_click" class="clickMenuOption">ADD NOTES TO EXISTING SHOW</span> | 
+        <span id="edit_existing_notes_click" class="clickMenuOption">EDIT EXISTING NOTES</span> | 
+        <span id="unpublished_episodes_click" class="clickMenuOption">UNPUBLISHED EPISODES</span> | 
+        <span id="game_ratings_click" class="clickMenuOption">GAME RATINGS</span> | 
+        <span id="log_out_click" class="clickMenuOption">LOG OUT</span>
     </div>
     <div id="add_notes_login" <?php if (!$this->session->username) { ?>class="formVisible" <?php } ?>>
         <?php

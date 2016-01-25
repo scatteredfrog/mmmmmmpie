@@ -82,9 +82,11 @@ class Shownotesadmin_model extends CI_Model {
     }
     
     public function getUnpublishedEpisodes() {
+        $data = array();
         $query = $this->db->select('id,episode_number,episode_topic')
                 ->from('show_info')
                 ->where('publish',null)
+                ->or_where('publish', '0')
                 ->order_by('episode_number', 'DESC')
                 ->get();
         $c = 0;
@@ -107,6 +109,45 @@ class Shownotesadmin_model extends CI_Model {
                  ->where_in('id',$data)
                  ->update('show_info');
         $result = $query->result();
+    }
+    
+    public function updateRatings($id, $jim, $sean) {
+        $data = array(
+            'jimRating' => $jim,
+            'seanRating' => $sean,
+        );
+
+        $query = $this->db->where('id',$id)
+                ->update('pfGameRatings',$data);
+        if ($query) {
+            $_SESSION['game_ratings'][$id]['jim_rating'] = $jim;
+            $_SESSION['game_ratings'][$id]['sean_rating'] = $sean;
+        }
+        return $query;
+    }
+    
+    public function retrieveGames() {
+        $data = '<select id="game_chooser" onchange="goGame()"><option value="xxx">(select a game)</option>';
+        $query = $this->db->select('p.id,p.gameTitle,p.jimRating,p.seanRating,p.episodeNumber,s.episode_topic')
+                ->from('pfGameRatings p')
+                ->join('show_info s', 's.episode_number = p.episodeNumber')
+                ->order_by('gameTitle')
+                ->get();
+        foreach ($query->result() as $row) {
+            $epnum = (int) $row->episodeNumber;
+            if ($epnum > 15) {
+                $epnum--;
+            }
+            $_SESSION['game_ratings'][$row->id]['game_title'] = $row->gameTitle;
+            $_SESSION['game_ratings'][$row->id]['jim_rating'] = $row->jimRating;
+            $_SESSION['game_ratings'][$row->id]['sean_rating'] = $row->seanRating;
+            $_SESSION['game_ratings'][$row->id]['episode_number'] = $row->episodeNumber;
+            $_SESSION['game_ratings'][$row->id]['episode_topic'] = $row->episode_topic;
+            $data .= '<option value="' . $row->id . '">';
+            $data .= $row->gameTitle . '</option>';
+        }
+        $data .= '</select>';
+        return $data;   
     }
     
     public function retrieveEpisodes($section) {
@@ -156,8 +197,9 @@ class Shownotesadmin_model extends CI_Model {
         $data = array(
             'note' => $note,
             'description_link' => $description_link,
-            'priority' => $priority,
+            'priority' => $priority
         );
+        
         $query = $this->db->where('id',$id)
                 ->update('show_notes',$data);
         return $query;
