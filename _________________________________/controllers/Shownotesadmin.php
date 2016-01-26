@@ -30,6 +30,9 @@ class Shownotesadmin extends CI_Controller {
             $exists = $this->shownotesadmin_model->doesRatingExist($game);
             if ($exists !== '3') {
                 $episodeNumber = $this->input->post('episodeNumber');
+                if ($episodeNumber > 15) {
+                    $episodeNumber++;
+                }
                 $jim = $this->input->post('jim');
                 $sean = $this->input->post('sean');
                 $exists = $this->shownotesadmin_model->addRatings($episodeNumber,$game,$jim,$sean);

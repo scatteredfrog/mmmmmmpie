@@ -170,7 +170,7 @@ class Shownotesadmin_model extends CI_Model {
             $_SESSION['game_ratings'][$row->id]['game_title'] = $row->gameTitle;
             $_SESSION['game_ratings'][$row->id]['jim_rating'] = $row->jimRating;
             $_SESSION['game_ratings'][$row->id]['sean_rating'] = $row->seanRating;
-            $_SESSION['game_ratings'][$row->id]['episode_number'] = $row->episodeNumber;
+            $_SESSION['game_ratings'][$row->id]['episode_number'] = $epnum;
             $_SESSION['game_ratings'][$row->id]['episode_topic'] = $row->episode_topic;
             $data .= '<option value="' . $row->id . '">';
             $data .= $row->gameTitle . '</option>';
