@@ -24,6 +24,19 @@ class Shownotesadmin extends CI_Controller {
             echo json_encode($_SESSION['game_ratings'][$id]);
         }
         
+        public function addNewRatings() {
+            $this->load->model('shownotesadmin_model');
+            $game = $this->input->post('gameTitle');
+            $exists = $this->shownotesadmin_model->doesRatingExist($game);
+            if ($exists !== '3') {
+                $episodeNumber = $this->input->post('episodeNumber');
+                $jim = $this->input->post('jim');
+                $sean = $this->input->post('sean');
+                $exists = $this->shownotesadmin_model->addRatings($episodeNumber,$game,$jim,$sean);
+            }
+            echo $exists;
+        }
+        
         public function submitRatingsChange() {
             $id = $this->input->post('id');
             $jim = $this->input->post('jim');

@@ -16,9 +16,39 @@
                     <form id="game_ratings_form">
                         <div id="game_list">
                             <div class="formLabelRow"></div>
-                            <div class="formLabelRow">
+                            <div class="formLabelRow" id="gamelist_dropdown_row">
                                 <span id="game_dropdown"></span>
                                 <button type="button" id="choose_game" onclick="goGame()">GO</button>
+                            </div>
+                            <div class="formLabelRow">
+                                <span class="bold">Game not listed? 
+                                    <button type="button" id="add_it">Add it!</button>
+                                </span>
+                            </div>
+                            <div class="formLabelRow" id="add_new_rating">
+                                Game title: <input type="text" id="add_game_title" /> * 
+                                Jim's rating: 
+                                <select id="add_jim_rating">
+                                    <option value="0">n/a</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select> * 
+                                Sean's rating: 
+                                <select id="add_sean_rating">
+                                    <option value="0">n/a</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <br />&nbsp;<br />
+                                Episode number: 
+                                <input type="number" id="add_ep_number" />
+                                <button type="button" id="add_new_rating_submit">Submit</button>
                             </div>
                             <hr />
                             <div class="formLabelRow"></div>

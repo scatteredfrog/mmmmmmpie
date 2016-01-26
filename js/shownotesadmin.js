@@ -1,6 +1,50 @@
 var notes_count = ex_notes_count = 0;
 $(document).ready(function() {
     
+    $('#add_new_rating_submit').on('click touchstart', function() {
+        var valid = true;
+        $('#add_new_rating input').each(function() {
+            if ($.trim($(this).val()).length < 1) {
+                valid = false;
+            }
+        });
+        if (valid) {
+            var post_data = {
+                'episodeNumber' : $('#add_ep_number').val(),
+                'jim' : $('#add_jim_rating').val(),
+                'sean' : $('#add_sean_rating').val(),
+                'gameTitle': $('#add_game_title').val()
+            };
+            
+            $.post('shownotesadmin/addNewRatings', post_data, function(data) {
+                if (data) {
+                    console.log(data);
+                    if (data == '1') {
+                        alert("Rating added successfully.");
+                        $('#add_new_rating input').each(function() {
+                            $(this).val('');
+                        });
+                        $('#add_new_rating select').each(function() {
+                            $(this).val('');
+                        });
+                        $('#add_new_rating').css('display','none');
+                        $('#game_ratings_click').trigger('click');
+                        $('#gamelist_dropdown_row').css('display', 'block');
+                    } else if (data == '3') {
+                        alert("That game's rating already exists.");
+                    } else {
+                        alert("There was a problem, chief.");
+                    }
+                }
+            });
+        }
+    });
+    
+    $('#add_it').on('click touchstart', function() {
+        $('#gamelist_dropdown_row').css('display', 'none');
+        $('#add_new_rating').css('display','block');
+    });
+    
     $('#game_ratings_click').on('click touchstart', function() {
         $('.hideMe').css('display','none');
         $('#game_ratings').css('display', 'block');

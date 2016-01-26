@@ -111,6 +111,35 @@ class Shownotesadmin_model extends CI_Model {
         $result = $query->result();
     }
     
+    public function doesRatingExist($game) {
+        $rowCount = 0;
+        $query = $this->db->select('episodeNumber')
+                ->from('pfGameRatings')
+                ->where('gameTitle', $game)
+                ->get();
+        foreach ($query->result() as $row) {
+            $rowCount++;
+        }
+        
+        if ($rowCount) {
+            return '3'; // rating already exists
+        } else {
+            return '1'; // all clear!
+        }
+    }
+    public function addRatings($episodeNumber, $game, $jim, $sean) {
+        $this->db->set('episodeNumber', $episodeNumber);
+        $this->db->set('gameTitle', $game);
+        $this->db->set('jimRating', $jim);
+        $this->db->set('seanRating', $sean);
+        if ($this->db->insert('pfGameRatings')) {
+            $data = '1';
+        } else {
+            $data = '0';
+        }
+        return $data;
+    }
+    
     public function updateRatings($id, $jim, $sean) {
         $data = array(
             'jimRating' => $jim,

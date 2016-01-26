@@ -81,6 +81,11 @@
     text-align: left;
 }
 
+#add_new_rating { 
+    display: none;
+    font-size: 14px;
+}
+
 #add_notes_to_existing_form .episodeFz, #add_notes_to_existing_form .edLink { width: 255px; float: left; }
 
 #add_notes_to_existing_form .formLabelRow { clear: both; padding-left: 35px; padding-bottom: 0; padding-top: 7px; }
