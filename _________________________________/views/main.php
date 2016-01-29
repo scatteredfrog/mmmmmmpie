@@ -5,6 +5,15 @@
     <title>Welcome to Pie Factory Podcast</title>
 
 <?php
+    $rt = $_SERVER['DOCUMENT_ROOT'];
+    $hs = $_SERVER['HTTP_HOST'];
+    if (stristr($rt, 'Volumes') && substr($hs,0,5) === 'local') {
+        $poddie = '/images/gpa65.png';
+        $imgSrc = '/images/wordpress_pf_logo.png';
+    } else {
+        $poddie = '/piefactory/images/gpa50.png';
+        $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
+    }
     echo link_tag('css/pfp_main.css');
 
 ?>
@@ -28,8 +37,12 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
-
-            </div>
+                <div id="gpa">
+                    <a href="http://ccg.podomatic.com/entry/2016-01-28T20_53_28-08_00" style="text-decoration: none!important;" target="_blank">
+                        <img src="<?= $poddie ?>" alt="Winner of the 2015 Golden Poddie Award!"/>
+                    </a>
+                </div>
+                            </div>
             <div id="latest_show">
                 <?php
                     echo heading('LATEST EPISODE:',2);
@@ -48,15 +61,6 @@
                 </div>
                 <div id="wrdpr">
                     <a href="http://piefactorypodcast.wordpress.com" target="_new">
-                        <?php
-                            $rt = $_SERVER['DOCUMENT_ROOT'];
-                            $hs = $_SERVER['HTTP_HOST'];
-                            if (stristr($rt, 'Volumes') && substr($hs,0,5) === 'local') {
-                                $imgSrc = '/images/wordpress_pf_logo.png';
-                            } else {
-                                $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
-                            }
-                        ?>
                         <img src="<?= $imgSrc ?>" /></a>
                 </div>
                 <div id="email_row">
