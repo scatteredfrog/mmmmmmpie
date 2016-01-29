@@ -11,7 +11,7 @@
         $poddie = '/images/gpa65.png';
         $imgSrc = '/images/wordpress_pf_logo.png';
     } else {
-        $poddie = '/piefactory/images/gpa50.png';
+        $poddie = '/piefactory/images/gpa65.png';
         $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
     }
     echo link_tag('css/pfp_main.css');
