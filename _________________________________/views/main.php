@@ -9,8 +9,10 @@
 
 ?>
     <script src=<?=base_url("js/jquery-1.9.1.min.js"); ?>></script>
+    <script src=<?=base_url('js/angular.min.js'); ?>></script>
+    <script src=<?=base_url('js/pfp_app.js'); ?>></script>
 </head>
-<body>
+<body ng-app="pfp" ng-controller="showNotes">
     
     <!-- Facebook crap -->
     <div id="fb-root"></div>
@@ -45,7 +47,17 @@
                     <div class="fb-like" data-href="https://www.facebook.com/PieFactoryPodcast" data-layout="button" data-action="like" data-show-faces="true"></div>
                 </div>
                 <div id="wrdpr">
-                    <a href="http://piefactorypodcast.wordpress.com" target="_new"><img src="/images/wordpress_pf_logo.png" /></a>
+                    <a href="http://piefactorypodcast.wordpress.com" target="_new">
+                        <?php
+                            $rt = $_SERVER['DOCUMENT_ROOT'];
+                            $hs = $_SERVER['HTTP_HOST'];
+                            if (stristr($rt, 'Volumes') && substr($hs,0,5) === 'local') {
+                                $imgSrc = '/images/wordpress_pf_logo.png';
+                            } else {
+                                $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
+                            }
+                        ?>
+                        <img src="<?= $imgSrc ?>" /></a>
                 </div>
                 <div id="email_row">
                     <div id="eml0">E-mail: </div><div id="eml1">pie</div><div id="eml2">factory@fab4it.co</div><div id="eml3">m</div><br />
