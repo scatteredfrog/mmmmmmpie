@@ -60,7 +60,7 @@ class Shownotesadmin_model extends CI_Model {
         echo $data;
     }
     
-    public function addNotes($episode_number,$descriptions,$description_links,$priorities,$is_everything,$episode_topic,$download_link) {
+    public function addNotes($episode_number,$descriptions,$description_links,$priorities,$is_everything,$episode_topic,$download_link, $publish) {
         $notes_count = count($descriptions);
         for ($x = 0; $x < $notes_count; $x++) {
             $this->db->set('episode', $episode_number);
@@ -69,7 +69,7 @@ class Shownotesadmin_model extends CI_Model {
             $this->db->set('priority', $priorities[$x]);
             if ($this->db->insert('show_notes')) {
                 if ($is_everything) {
-                    if ($this->addEpisode($episode_number, $episode_topic, $download_link)) {
+                    if ($this->addEpisode($episode_number, $episode_topic, $download_link, $publish)) {
                         echo '1';
                         return;
                     }

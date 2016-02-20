@@ -245,7 +245,8 @@ $(document).ready(function() {
                         'priority': priority,
                         'is_everything' : true,
                         'episode_topic' : $('#episode_topic').val(),
-                        'download_link' : $('#download_link').val()
+                        'download_link' : $('#download_link').val(),
+                        'publish' : $('#publish').prop('checked')
                     },function(data) {
                         switch(data) {
                             case '1':

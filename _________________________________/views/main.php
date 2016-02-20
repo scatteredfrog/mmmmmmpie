@@ -66,6 +66,9 @@
                 <div id="email_row">
                     <div id="eml0">E-mail: </div><div id="eml1">pie</div><div id="eml2">factory@fab4it.co</div><div id="eml3">m</div><br />
                 </div>
+                <div id="patr">
+                    <a href="https://www.patreon.com/PieFactoryPodcast" target="_blank">Support Pie Factory Podcast via Patreon</a>
+                </div>
             </div>
         </div>
     </div>

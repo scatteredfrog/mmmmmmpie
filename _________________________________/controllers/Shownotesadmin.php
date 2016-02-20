@@ -73,11 +73,12 @@ class Shownotesadmin extends CI_Controller {
             $description_links = $this->input->post('description_link');
             $is_everything = $this->input->post('is_everything');
             $priorities = $this->input->post('priority');
+            $publish = $this->input->post('publish');
             $this->load->model('shownotesadmin_model');
             if ($is_everything) {
                 $episode_topic = $this->input->post('episode_topic');
                 $download_link = $this->input->post('download_link');
-                $this->shownotesadmin_model->addNotes($episode_number,$descriptions,$description_links,$priorities,$is_everything,$episode_topic,$download_link);
+                $this->shownotesadmin_model->addNotes($episode_number,$descriptions,$description_links,$priorities,$is_everything,$episode_topic,$download_link, $publish);
             } else {
                 $this->shownotesadmin_model->addNotes($episode_number,$descriptions,$description_links,$priorities);
             }
