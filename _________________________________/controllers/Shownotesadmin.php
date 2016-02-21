@@ -144,7 +144,7 @@ class Shownotesadmin extends CI_Controller {
             $unpublishedList = $this->shownotesadmin_model->getUnpublishedEpisodes();
             $returnHTML = '<div class="formLabelRow"><div class="unpubCheck uHead">Publish?';
             $returnHTML .= '</div><div class="unpubNumber uHead">Episode topic</div>';
-            $returnHTML .= '<div><button type="button" onclick="buttPub()">PUBLISH</button></div>';
+            $returnHTML .= '<div><button id="butt_pub" type="button" onclick="buttPub()">PUBLISH</button></div>';
             $returnHTML .= '</div>';
             foreach($unpublishedList as $k => $v) {
                 $returnHTML .= '<div class="formLabelRow"><div class="unpubCheck">';

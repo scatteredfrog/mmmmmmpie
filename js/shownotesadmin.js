@@ -1,6 +1,10 @@
 var notes_count = ex_notes_count = 0;
 $(document).ready(function() {
     
+    $('#butt_pub').on('touchstart', function () {
+        buttPub();
+    });
+    
     $('#add_new_rating_submit').on('click touchstart', function() {
         var valid = true;
         $('#add_new_rating input').each(function() {
