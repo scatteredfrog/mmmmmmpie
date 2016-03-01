@@ -1,8 +1,5 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
-    echo "<div id='show_notes_heading'><hr />";
-    echo heading("Show Notes");
-    echo "</div>";    
     $episode_count = 0;
     foreach($episode as $show) {
         if ($episode_count % 2 === 0) {
