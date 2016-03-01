@@ -157,6 +157,25 @@
                         <input type="button" id="click_to_submit_all" value="Click to submit" />
                     </div>
                 </div>
+                <div id="news" class="hideMe">
+                    <form id="news_form">
+                        <div class="formLabelRow">
+                            Date (YYYY/MM/DD):
+                            <input type="text" id="news_date" />
+                        </div>
+                        <div class="formLabelRow">
+                            Headline:
+                            <input type="text" id="news_headline" />
+                        </div>
+                        <div class="formLabelRow">
+                            Article:<br>
+                            <textarea rows="12" cols="80" id="news_article"></textarea>
+                        </div>
+                        <div class="formLabelRow">
+                            <button type="button" id="news_button">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div id="header_contact">
                 <div id="soc_row">

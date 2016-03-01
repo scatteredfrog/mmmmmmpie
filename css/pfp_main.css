@@ -1,25 +1,27 @@
 body {
-    background-color: #2a2a2a;
+    background-color: #000;
     font-family: 'Lucida Grande', 'Trebuchet MS', Sans-Serif;
     color: #eee;
 }
 
 .bold { font-weight: bold; }
-a { color: gold; }
+a { color: gold; text-decoration: none; }
 .containerCenter {    text-align: center; }
+.ratingsContainer { font-weight: normal; }
+.noPaddingTop { padding-top: 0!important;}
 #gpa a, #gpa a:visited, #gpa a:hover, #gpa a:link, #gpa a:active { text-decoration: none; }
 .headerWrapper {
     margin-left: auto;
     margin-right: auto;
-    height: 340px;
+    height: 250px;
     position: relative;
     font-size: 20px;
     width: 787px;
 }
 #header_image {
-    background: url('../images/pfp_header_image_sq.jpg');
-    height: 337px;
-    width: 337px;
+    background: url('../images/pfp_header_image_sq300.jpg');
+    height: 247px;
+    width: 247px;
     float: left;
     position: relative;
     left: 44px;
@@ -52,7 +54,11 @@ a { color: gold; }
 #eml { float: right; position: relative; top: 6px; }
 #twit, #fbok { float: left; }
 #twit { position: relative; left: 41px; top: 9px; }
-.showRatings { height: 41px; }
+.showRatings {
+    height: 41px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
 
 
 #fbok {
@@ -72,11 +78,11 @@ hr {
     top: 16px;
 }
 
-#show_notes_heading { clear: both; }
-#show_notes_heading h1 { padding-top: 9px; text-align: center; }
+.show_notes_heading { clear: both; }
+.show_notes_heading h1 { padding-top: 9px; text-align: center; }
 .showNotes0 a, .showNotes1 a { text-decoration: none; color: #700; }
 .showNotes0, .showNotes1 {
-    width: 461px;
+    width: 693px;
     border-color: #ff4320;
     border-radius: 12px;
     border-width: 5px;
@@ -93,7 +99,10 @@ hr {
     clear: both;
     position: relative;
 }
-.showNotes0 { float: left;  }
+.showNotes0 { 
+    clear: both;
+    margin: 0 auto;
+}
 .showNotes1 { float: right; }
 
 .showNote {
@@ -139,7 +148,7 @@ h4 {
     width: 445px;
     position: relative;
     left: 60px;
-    top: 63px;
+    top: 22px;
     border-color: #101010;
     border-style: solid;
     border-width: 2px;
@@ -187,4 +196,79 @@ h4 {
     float: left;
     text-align: left;
     left: 16px;
+}
+
+@font-face {
+    font-family: "Arcade";
+    src: url('../fonts/ARCADE.TTF');
+}
+
+#main_toolbar {
+    border-radius: 5px;
+    border-style: double;
+    clear: both;
+    display: block;
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+    width: 1014px;
+    border-color: #ff7419;
+    text-align: center;
+    top: 12px;
+}
+
+.toolbarDiv {
+    font-family: "Arcade";
+    font-size: 24px;
+    color: #ffc219;
+    text-transform: uppercase;
+    float: left;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 12px;
+}
+
+.toolbarDiv:hover, .toolbarDiv a:hover {
+    color: #bdce49;
+}
+
+.templateBody h1 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-family: "Arcade";
+    text-transform: uppercase;
+    height: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;  
+    -khtml-user-select: none;   
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none;
+}
+.nextPage { float: left; }
+.prevPage { float: right; }
+.nextPage, .prevPage {
+    display: block;
+    position: relative;
+    width: 100px;
+}
+.paginatedList {
+    float: left;
+    position: relative;
+    width: 610px;
+}
+.templateBody {
+    width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+.nextPage img, .prevPage img, .clickMenuOption { cursor: pointer; }
+.newsDate { color: #fc6d42; }
+.newsHeadline { color: #21fdff; }
+.newsArticle {
+    color: #fff;
+    position: relative;
+    left: 26px;
+    margin-bottom: 9px;
 }

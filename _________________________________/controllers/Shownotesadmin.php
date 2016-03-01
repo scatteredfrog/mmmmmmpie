@@ -3,7 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Shownotesadmin extends CI_Controller {
 
-	public function index() {
+	public function submitNews() {
+            $this->load->model('shownotesadmin_model');
+            $data['date'] = $this->input->post('date');
+            $data['headline'] = $this->input->post('headline');
+            $data['article'] = $this->input->post('article');
+            $success = $this->shownotesadmin_model->addNews($data);
+            echo $success;
+        }
+        
+        public function index() {
             $this->load->model('shownotesadmin_model');
             $data['new_episode'] = $this->shownotesadmin_model->getCurrentEpisode();
             $this->load->view('shownotesmain',$data);

@@ -19,6 +19,7 @@
 ?>
     <script src=<?=base_url("js/jquery-1.9.1.min.js"); ?>></script>
     <script src=<?=base_url('js/angular.min.js'); ?>></script>
+    <script src=<?=base_url('js/angular-route.min.js'); ?>></script>
     <script src=<?=base_url('js/pfp_app.js'); ?>></script>
 </head>
 <body ng-app="pfp" ng-controller="showNotes">
@@ -37,12 +38,7 @@
     <div class="containerCenter">
         <div class="headerWrapper">
             <div id="header_image">
-                <div id="gpa">
-                    <a href="http://ccg.podomatic.com/entry/2016-01-28T20_53_28-08_00" style="text-decoration: none!important;" target="_blank">
-                        <img src="<?= $poddie ?>" alt="Winner of the 2015 Golden Poddie Award!"/>
-                    </a>
-                </div>
-                            </div>
+            </div>
             <div id="latest_show">
                 <?php
                     echo heading('LATEST EPISODE:',2);
@@ -69,3 +65,19 @@
             </div>
         </div>
     </div>
+
+<div id="main_toolbar">
+    <div class="toolbarDiv"><a href="#news" ng-click="snClick('Pie Factory Podcast News')">News</a></div>
+    <div class="toolbarDiv"><a href="#shownotes" ng-click="showShows(); linkTitle='Show Notes';">Show Notes</a></div>
+    <div class="toolbarDiv">About Us</div>
+    <div class="toolbarDiv">Our Friends</div>
+    <div class="toolbarDiv">Our Go-To Sites</div>
+    <div class="toolbarDiv">Contact Us</div>
+</div>
+    
+<?php
+    echo "<div class='templateBody'><hr />";
+    echo heading("{{linkTitle}}");
+    echo "<div ng-view id='show_notes_heading'><hr />";
+    echo "</div>";
+    echo "</div>";

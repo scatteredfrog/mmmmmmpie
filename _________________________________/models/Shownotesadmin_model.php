@@ -155,6 +155,22 @@ class Shownotesadmin_model extends CI_Model {
         return $query;
     }
     
+    public function retrieveNews() {
+        $query = $this->db->select('id,date,headline,article')
+                ->from('pfNews')
+                ->order_by('date','DESC')
+                ->get();
+        $n = 0;
+        foreach ($query->result() as $row) {
+            $news['news'][$n]['id'] = $row->id;
+            $news['news'][$n]['date'] = $row->date;
+            $news['news'][$n]['headline'] = $row->headline;
+            $news['news'][$n]['article'] = $row->article;
+            $n++;
+        }
+        return $news;
+    }
+    
     public function retrieveGames() {
         $data = '<select id="game_chooser" onchange="goGame()"><option value="xxx">(select a game)</option>';
         $query = $this->db->select('p.id,p.gameTitle,p.jimRating,p.seanRating,p.episodeNumber,s.episode_topic')
@@ -232,5 +248,17 @@ class Shownotesadmin_model extends CI_Model {
         $query = $this->db->where('id',$id)
                 ->update('show_notes',$data);
         return $query;
+    }
+    
+    public function addNews($news_data) {
+        $this->db->set('date', $news_data['date']);
+        $this->db->set('headline', $news_data['headline']);
+        $this->db->set('article', $news_data['article']);
+        if ($this->db->insert('pfNews')) {
+            $data = '1';
+        } else {
+            $data = '0';
+        }
+        return $data;
     }
 }

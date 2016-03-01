@@ -1,7 +1,36 @@
 var notes_count = ex_notes_count = 0;
 $(document).ready(function() {
     
+    $('#news_button').on('click touchstart', function() {
+        var vd = "Please enter a valid date.";
+        var errors = Array();
+        var patt = /[0-9]{4}\/[0|1][0-9]\/[0-3][0-9]/g;
+        if ($('#news_date').val() == '' || $('#news_headline').val() == '' || $("#news_article").val() == '') {
+            alert("You need to fill out all three fields.");
+            return false;
+        } else if (!patt.test($('#news_date').val())) {
+            alert(vd);
+            return false;
+        } else {
+            var post_data = {
+                'date' : $('#news_date').val(),
+                'headline' : $('#news_headline').val(),
+                'article' : $('#news_article').val()
+            };        
+            $.post('shownotesadmin/submitNews', post_data, function(data) {
+                if (data == '1') {
+                    $('[id^=news_]').val('');
+                    alert("News item added successfully!");
+                } else {
+                    alert("Sorry, there was a problem.");
+                }
+            });
+        }
+    });
+    
     $('#add_new_rating_submit').on('click touchstart', function() {
+        $('#header_contact').css('display','none');
+        $('.containerCenter').css('height','343px');
         var valid = true;
         $('#add_new_rating input').each(function() {
             if ($.trim($(this).val()).length < 1) {
@@ -18,7 +47,6 @@ $(document).ready(function() {
             
             $.post('shownotesadmin/addNewRatings', post_data, function(data) {
                 if (data) {
-                    console.log(data);
                     if (data == '1') {
                         alert("Rating added successfully.");
                         $('#add_new_rating input').each(function() {
@@ -41,11 +69,21 @@ $(document).ready(function() {
     });
     
     $('#add_it').on('click touchstart', function() {
+        $('#header_contact').css('display','none');
         $('#gamelist_dropdown_row').css('display', 'none');
         $('#add_new_rating').css('display','block');
     });
     
+    $('#add_news_click').on('click touchstart', function() {
+        $('#header_contact').css('display','none');
+        $('.containerCenter').css('height','343px');
+        $('.hideMe').css('display','none');
+        $('#news').css('display', 'block');
+    });
+    
     $('#game_ratings_click').on('click touchstart', function() {
+        $('.containerCenter').css('height','343px');
+        $('#header_contact').css('display','none');
         $('.hideMe').css('display','none');
         $('#game_ratings').css('display', 'block');
         $.post('shownotesadmin/getGames', {}, function(data) {
@@ -54,6 +92,8 @@ $(document).ready(function() {
     });
     
     $('#add_notes_click').on('click touchstart',function() {
+        $('#header_contact').css('display','none');
+        $('.containerCenter').css('height','343px');
         $('.hideMe').css('display','none');
         $('#add_notes_to_existing').css('display','block');
         $.post('shownotesadmin/getEpisodes',{ 'section' : 'add'},function(data) {
@@ -144,6 +184,8 @@ $(document).ready(function() {
     });
     
     $('#unpublished_episodes_click').on('click touchstart', function() {
+        $('#header_contact').css('display','none');
+        $('.containerCenter').css('height','343px');
         $.post('shownotesadmin/getUnpublished', {}, function(data) {
             $('#unpublished_list').html(data);
         });
@@ -273,6 +315,8 @@ $(document).ready(function() {
     });
     
     $('#edit_existing_notes_click').on('click touchstart',function() {
+        $('#header_contact').css('display','none');
+        $('.containerCenter').css('height','343px');
         $('.hideMe').css('display','none');
         $.post('shownotesadmin/getEpisodes',{},function(data) {
             $('#edit_notes_dropdown').html(data);

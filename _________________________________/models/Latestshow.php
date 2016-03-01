@@ -56,4 +56,18 @@ class Latestshow extends CI_Model {
             }
             return $notes;
         }
+        
+        public function retrieveRatings() {
+            $ratings = array();
+            $gquery = $this->db->select('id,gameTitle,jimRating,seanRating,episodeNumber')
+                    ->from('pfGameRatings')
+                    ->get();
+            foreach($gquery->result() as $row) {
+                $ep_number = $row->episodeNumber > 15 ? $row->episodeNumber - 1 : $row->episodeNumber;
+                $ratings[$ep_number][$row->id]['game'] = $row->gameTitle;
+                $ratings[$ep_number][$row->id]['jimRating'] = $row->jimRating;
+                $ratings[$ep_number][$row->id]['seanRating'] = $row->seanRating;
+            }
+            return $ratings;
+        }
 }
