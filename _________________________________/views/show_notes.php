@@ -1,7 +1,7 @@
 <div class="nextPage">
     &nbsp;
     <span ng-show="currentPage > 0" ng-click="decrementPage()">
-        <img src="../images/arrow_gauche.jpg" />
+        <img src="images/arrow_gauche.jpg" />
     </span>
 </div>
 <div class="paginatedList">
@@ -13,7 +13,7 @@
 </div>
 <div class="prevPage">
     <span ng-show="currentPage < (numberOfPages-1)" ng-click="incrementPage()">
-        <img src="../images/arrow_droit.jpg" />
+        <img src="images/arrow_droit.jpg" />
     </span>
     &nbsp;
 </div>
