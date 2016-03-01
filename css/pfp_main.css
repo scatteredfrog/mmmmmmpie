@@ -258,6 +258,9 @@ h4 {
     position: relative;
     width: 610px;
 }
+.paginatedList li {
+    cursor: pointer;
+}
 .templateBody {
     width: 1024px;
     margin: 0 auto;
