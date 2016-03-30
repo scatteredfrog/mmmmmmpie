@@ -39,7 +39,7 @@
                 </div>
                 <div class="seanRating" ng-show="rating.seanRating">
                     <span class="bold">Sean:</span> 
-                    <span ng-show="rating.jimRating > 0">{{rating.jimRating}}</span> 
+                    <span ng-show="rating.seanRating > 0">{{rating.seanRating}}</span> 
                     <span ng-if="rating.seanRating === 0"> (opted not to rate)</span>
                     <span ng-if="rating.seanRating === 1"> Continue</span>
                     <span ng-if="rating.seanRating > 1"> Continues</span>
