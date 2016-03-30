@@ -7,9 +7,9 @@
 <div class="paginatedList">
 <ul>
     <li ng-repeat="returnedNews in pageNews[currentNewsPage]" ng-click="newsPop($index);" class="clickMenuOption">
-        <span class="newsDate">{{returnedNews.date}}:</span> <span class="newsHeadline">{{returnedNews.headline}}</span> 
+        <span class="newsDate">{{returnedNews.date}}:</span> <span class="newsHeadline" ng-bind-html="returnedNews.headline"></span> 
         <a>(click to show/hide story)</a>
-        <div ng-show="show_news[$index]" class="newsArticle">{{returnedNews.article}}</div>
+        <div ng-show="show_news[$index]" class="newsArticle" ng-bind-html="returnedNews.article"></div>
     </li>
 </ul>
 </div>

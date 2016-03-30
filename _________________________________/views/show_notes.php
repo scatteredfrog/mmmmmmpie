@@ -33,14 +33,14 @@
                 <div class="jimRating" ng-show="rating.jimRating">
                     <span class="bold">Jim:</span> 
                     <span ng-show="rating.jimRating > 0">{{rating.jimRating}}</span> 
-                    <span ng-if="rating.jimRating === 0"> (opted not to rate)</span>
+                    <span ng-if="rating.jimRating === 0 || rating.jimRating == ''"> (opted not to rate)</span>
                     <span ng-if="rating.jimRating === 1"> Continue</span>
                     <span ng-if="rating.jimRating > 1"> Continues</span>
                 </div>
                 <div class="seanRating" ng-show="rating.seanRating">
                     <span class="bold">Sean:</span> 
                     <span ng-show="rating.seanRating > 0">{{rating.seanRating}}</span> 
-                    <span ng-if="rating.seanRating === 0"> (opted not to rate)</span>
+                    <span ng-if="rating.seanRating === 0 || rating.seanRating == ''"> (opted not to rate)</span>
                     <span ng-if="rating.seanRating === 1"> Continue</span>
                     <span ng-if="rating.seanRating > 1"> Continues</span>
                 </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div ng-repeat="shownote in displayCurrent.notes" class="showNote">
-        <a href="{{shownote.description_link}}">{{shownote.note}}</a>
+        <a href="{{shownote.description_link}}"><span ng-bind-html="shownote.note"></span></a>
     </div>
         <?php
 //            echo 'Episode number: ' . $epnum."---flirzle";

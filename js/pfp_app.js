@@ -1,4 +1,4 @@
-var app = angular.module('pfp',['ngRoute']);
+var app = angular.module('pfp',['ngRoute','ngSanitize']);
 
 app.controller('showNotes', function($scope, $http, $route, $routeParams, $location) {
     $scope.ratingsToShow = [];

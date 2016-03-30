@@ -19,6 +19,7 @@
 ?>
     <script src=<?=base_url("js/jquery-1.9.1.min.js"); ?>></script>
     <script src=<?=base_url('js/angular.min.js'); ?>></script>
+    <script src=<?=base_url('js/angular-sanitize.min.js'); ?>></script>
     <script src=<?=base_url('js/angular-route.min.js'); ?>></script>
     <script src=<?=base_url('js/pfp_app.js'); ?>></script>
 </head>
