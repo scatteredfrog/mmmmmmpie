@@ -116,7 +116,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     };
     
     $scope.snClick = function(link) {
-        $scope.linkTitle = link;
+        $scope.linkTitle = link === 'shownotes' ? 'show notes' : link;
     };
     
     $scope.$watch(function() {
@@ -125,7 +125,11 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
         if ($location.path() === '/news') {
             $scope.linkTitle = 'Pie Factory Podcast News';
         } else {
-            $scope.linkTitle = $location.path().substr(1);
+            var locpath = $location.path().substr(1);
+            $scope.linkTitle = locpath === 'shownotes' ? 'show notes' : locpath;
+        }
+        if ($scope.linkTitle == '') {
+            $scope.linkTitle = 'Pie Factory Podcast News';
         }
     });
 });
