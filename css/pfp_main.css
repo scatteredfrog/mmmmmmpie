@@ -288,7 +288,7 @@ h4 {
 }
 
 #your_hosts {
-    background-image: url('/images/yourhosts.jpg');
+    background-image: url('../images/yourhosts.jpg');
     height: 259px;
     background-repeat: no-repeat;
     width: 275px;
