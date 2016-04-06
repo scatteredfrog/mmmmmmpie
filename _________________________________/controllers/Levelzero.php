@@ -20,6 +20,9 @@ class Levelzero extends CI_Controller {
         $this->load->view('show_notes');
     }
     
+    public function aboutus() {
+        $this->load->view('about_us');
+    }
     public function get_show_notes() {
         $this->load->model('latestshow');
         $show_info = $this->latestshow->getLatestShow();

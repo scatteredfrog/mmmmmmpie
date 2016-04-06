@@ -125,11 +125,20 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
         if ($location.path() === '/news') {
             $scope.linkTitle = 'Pie Factory Podcast News';
         } else {
-            var locpath = $location.path().substr(1);
-            $scope.linkTitle = locpath === 'shownotes' ? 'show notes' : locpath;
-        }
-        if ($scope.linkTitle == '') {
-            $scope.linkTitle = 'Pie Factory Podcast News';
+            switch ($location.path().substr(1)) {
+                case '':
+                    $scope.linkTitle = 'Pie Factory Podcast News';
+                    break;
+                case 'shownotes':
+                    $scope.linkTitle = 'show notes';
+                    break;
+                case 'aboutus':
+                    $scope.linkTitle = 'about us';
+                    break;
+                default:
+                    $location.path().substr(1);
+                    break;
+            }
         }
     });
 });
@@ -150,6 +159,9 @@ app.config(["$routeProvider",
                 }).when("/news", {
                     controller: "showNotes",
                     templateUrl: "index.php/levelzero/news"
+                }).when("/aboutus", {
+                    controller: "showNotes",
+                    templateUrl: "index.php/levelzero/aboutus"
                 }).otherwise({
                     redirectTo:"/"
                 });

@@ -5,6 +5,10 @@ body {
 }
 #patr { padding-bottom: 12px; }
 .bold { font-weight: bold; }
+.strike { 
+    text-decoration: line-through;
+    color: #7e7e7e;
+}
 a { color: gold; text-decoration: none; }
 .containerCenter {    text-align: center; }
 .ratingsContainer { font-weight: normal; }
@@ -274,4 +278,30 @@ h4 {
     position: relative;
     left: 26px;
     margin-bottom: 9px;
+}
+
+.aboutUsContainer {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 275px;
+}
+
+#your_hosts {
+    background-image: url('/images/yourhosts.jpg');
+    height: 259px;
+    background-repeat: no-repeat;
+    width: 275px;
+    border-radius: 13px;
+    clear: both;
+    float: left;
+    position: relative;
+    left: 68px;
+}
+
+.aboutYourHosts {
+    float: right;
+    position: relative;
+    width: 570px;
+    padding-top: 10px;
 }

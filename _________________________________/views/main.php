@@ -73,7 +73,7 @@
 <div id="main_toolbar">
     <div class="toolbarDiv"><a href="#news" ng-click="snClick('Pie Factory Podcast News')">News</a></div>
     <div class="toolbarDiv"><a href="#shownotes" ng-click="showShows(); linkTitle='Show Notes';">Show Notes</a></div>
-    <div class="toolbarDiv">About Us</div>
+    <div class="toolbarDiv"><a href="#aboutus" ng-click="snClick('About Us')">About Us</a></div>
     <div class="toolbarDiv">Our Friends</div>
     <div class="toolbarDiv">Our Go-To Sites</div>
     <div class="toolbarDiv">Contact Us</div>
