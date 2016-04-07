@@ -6,7 +6,7 @@
         Jim and Sean, shown here discussing which games they'll <span class='strike'>look up on 
             Wikipedia</span>
         research diligently so they can have an intelligent discussion on the next episode, 
-        twice weekly try to fulfill their mission to make Tinkle Pit a household name.<br />
+        on a biweekly basis try to fulfill their mission to make Tinkle Pit a household name.<br />
         &nbsp;<br />
         In each episode, Sean and Jim discuss two (2) classic arcade games and reveal a common 
         theme. Because they're longtime classic console gamers, the hosts also give a home gamer's 
