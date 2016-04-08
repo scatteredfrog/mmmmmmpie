@@ -262,7 +262,7 @@ h4 {
     position: relative;
     width: 610px;
 }
-.paginatedList li {
+.paginatedList li, .aboutYourHosts a {
     cursor: pointer;
 }
 .templateBody {

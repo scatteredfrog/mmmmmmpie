@@ -40,7 +40,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     $scope.aboutJim += "<span class='italic'>Mystery Science Theater 3000</span>, Monty Python, bicycle ";
     $scope.aboutJim += "riding (his top distance is 100 miles in one ride), hiking, collecting road maps, ";
     $scope.aboutJim += "and talking about himself in the third person.";
-    $scope.aboutSean = "Sean is a lifelong Libra who and a web developer. ";
+    $scope.aboutSean = "Sean is a lifelong Libra and a web developer. ";
     $scope.aboutSean += "(And that he also developed this site proves that programmers ";
     $scope.aboutSean += "just can't design.)<br />&nbsp;<br />His first console was an Atari ";
     $scope.aboutSean += "2600, a Christmas present in 1982; he still plays 2600 games to this day. ";
