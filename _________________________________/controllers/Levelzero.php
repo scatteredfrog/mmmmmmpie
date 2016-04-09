@@ -39,12 +39,12 @@ class Levelzero extends CI_Controller {
         $config['mailtype'] = 'html';
         $this->email->initialize($config);
         $this->email->from('webmaster@fab4it.com', 'piefactorypodcast.com');
-        $this->email->to('seancourtney@fab4it.com');
+        $this->email->to('piefactory@fab4it.com');
         $this->email->reply_to($email);
         $this->email->subject('PFP web site Contact Us');
         $message = 'Name: ' . $name . '<br />';
         $message += 'E-mail address: ' . $email . '<br />&nbsp;<br />';
-        $ClearText = preg_replace( "/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags(tellus))) );
+        $ClearText = preg_replace( "/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags($tellus))) );
         $message += 'Message: ' . $ClearText;
         $this->email->message($message);
         $this->email->send();
