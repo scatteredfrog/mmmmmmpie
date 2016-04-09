@@ -5,6 +5,7 @@ body {
 }
 #patr { padding-bottom: 12px; }
 .bold { font-weight: bold; }
+.italic { font-style: italic; }
 .strike { 
     text-decoration: line-through;
     color: #7e7e7e;
@@ -262,9 +263,15 @@ h4 {
     position: relative;
     width: 610px;
 }
-.paginatedList li {
+.paginatedList li {    cursor: pointer; }
+
+#csubmit {
+    float: right;
     cursor: pointer;
+    position: relative;
+    top: 6px;
 }
+
 .templateBody {
     width: 1024px;
     margin: 0 auto;
@@ -304,4 +311,43 @@ h4 {
     position: relative;
     width: 570px;
     padding-top: 10px;
+}
+
+.cRow {
+    padding: 21px 21px 48px 21px;
+    width: 100%;
+}
+
+.contactA {
+    float: left;
+    width: 500px;
+}
+
+.contactQ {
+    clear: both;
+    float: left;
+    left: 25px;
+    position: relative;
+    width:400px;
+    padding-right: 41px;
+}
+
+.contactA input {
+    float: left;
+    width: 429px;
+    line-height: 22px;
+}
+
+#ctellus {
+    width: 434px;
+    height: 67px;
+}
+
+.charCount {
+    color: #21fdff;
+    font-style: italic;
+}
+
+.redChars {
+    color: #ff0000;    
 }

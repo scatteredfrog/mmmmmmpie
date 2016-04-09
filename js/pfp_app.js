@@ -1,6 +1,11 @@
 var app = angular.module('pfp',['ngRoute','ngSanitize']);
 
 app.controller('showNotes', function($scope, $http, $route, $routeParams, $location) {
+    $scope.messageChars = 0;
+    $scope.cemail = '';
+    $scope.cname = '';
+    $scope.ctellus = '';
+    $scope.messageSent = false;
     $scope.ratingsToShow = [];
     $scope.clickedLink = '';
     $scope.linkTitle = 'Pie Factory Podcast News';
@@ -64,6 +69,47 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
         }
     );
     
+    $scope.submitContact = function() {
+        var errors = '';
+        var misc_message = '';
+
+        if ($scope.cname.length < 1) {
+            errors += '\nWe need your e-mail address. (We won\'t share it with anyone!)';
+        }
+        if (!doesThisEmailAddressNotSuck($scope.cemail)) {
+            errors += '\n\nThe e-mail address you provided isn\'t valid.';
+        } else if ($scope.cemail.toLowerCase().indexOf('gmail.com') > 0 && $scope.cemail.indexOf('+') > 0) {
+            misc_message += '\nAhhh, using a Gmail alias, eh? We see what you did there. :)';
+        }
+        if ($scope.ctellus.length < 25) {
+            errors += '\n\nSurely you have SOMETHING to tell us!';
+        }
+        if (errors) {
+            alert(errors);
+            return false;
+        }
+        if (!errors && misc_message) {
+            alert(misc_message);
+        }
+        
+        $http({
+            url: "index.php/levelzero/submitContact",
+                method: "POST",
+                headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+                data: $.param( {
+                    name: $scope.cname,
+                    email: $scope.cemail,
+                    tellus: $scope.ctellus
+                })
+        }).success(function(data, status, headers, config){
+            $scope.data = data;
+            $scope.messageSent = true;
+        }).error(function(data, status, headers, config) {
+            $scope.status = status;
+            alert("Hmmm...sorry, there was a problem. Your feedback may not have been received.");
+        });
+    };
+    
     $scope.getRatings = function() {
         $http.get('index.php/levelzero/get_ratings').success(
             function($data) {
@@ -88,6 +134,10 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
         } else {
             return false;
         }
+    };
+    
+    $scope.countCharacters = function() {
+        $scope.messageChars = $scope.ctellus.length;
     };
     
     $scope.newsPop = function(idx) {
@@ -135,6 +185,10 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
                 case 'aboutus':
                     $scope.linkTitle = 'about us';
                     break;
+                case 'cactus':
+                    $scope.linkTItle = 'contact us';
+                    $scope.messageSent = false;
+                    break;
                 default:
                     $location.path().substr(1);
                     break;
@@ -162,8 +216,16 @@ app.config(["$routeProvider",
                 }).when("/aboutus", {
                     controller: "showNotes",
                     templateUrl: "index.php/levelzero/aboutus"
+                }).when("/cactus", {
+                    controller: "showNotes",
+                    templateUrl: "index.php/levelzero/cactus"
                 }).otherwise({
                     redirectTo:"/"
                 });
 	}
 ]);
+
+function doesThisEmailAddressNotSuck(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
