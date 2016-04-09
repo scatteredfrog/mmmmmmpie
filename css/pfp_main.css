@@ -287,8 +287,32 @@ h4 {
     height: 275px;
 }
 
-#your_hosts {
+.yourHosts {
     background-image: url('../images/yourhosts.jpg');
+    height: 259px;
+    background-repeat: no-repeat;
+    width: 275px;
+    border-radius: 13px;
+    clear: both;
+    float: left;
+    position: relative;
+    left: 68px;
+}
+
+.jimHost {
+    background-image: url('../images/therealjimmyg.jpg');
+    height: 259px;
+    background-repeat: no-repeat;
+    width: 275px;
+    border-radius: 13px;
+    clear: both;
+    float: left;
+    position: relative;
+    left: 68px;
+}
+
+.seanHost {
+    background-image: url('../images/identitycrisis.jpg');
     height: 259px;
     background-repeat: no-repeat;
     width: 275px;
