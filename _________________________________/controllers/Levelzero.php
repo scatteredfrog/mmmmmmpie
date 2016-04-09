@@ -43,9 +43,10 @@ class Levelzero extends CI_Controller {
         $this->email->reply_to($email);
         $this->email->subject('PFP web site Contact Us');
         $message = 'Name: ' . $name . '<br />';
-        $message += 'E-mail address: ' . $email . '<br />&nbsp;<br />';
-        $message += 'Message: ' . $tellus;
-        $this->email->message($message);
+        $message .= 'E-mail address: ' . $email . '<br />&nbsp;<br />';
+        $message .= 'Message: ' . $tellus;
+        $ClearText = preg_replace( "/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags($tellus))) );
+        $this->email->message($ClearText);
         $this->email->send();
         
         return;
