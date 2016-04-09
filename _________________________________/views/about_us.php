@@ -1,5 +1,5 @@
 <div class="aboutUsContainer">
-    <div class="yourHosts" id="your_hosts">
+    <div ng-class="{yourHosts: aboutHosts==about, jimHost: aboutHosts==aboutJim, seanHost: aboutHosts==aboutSean}" id="your_hosts">
 
     </div>
     <div class="aboutYourHosts">

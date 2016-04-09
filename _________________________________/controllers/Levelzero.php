@@ -23,6 +23,35 @@ class Levelzero extends CI_Controller {
     public function aboutus() {
         $this->load->view('about_us');
     }
+    
+    public function cactus() {
+        $this->load->view('contact_us');
+    }
+    
+    public function submitContact() {
+        $name = $this->input->post('name');
+        $email = $this->input->post('email');
+        $tellus = $this->input->post('tellus');
+        
+        // e-mail stuff
+        $this->load->library('email');
+        $config['charset'] = 'iso-8859-1';
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->from('webmaster@fab4it.com', 'piefactorypodcast.com');
+        $this->email->to('seancourtney@fab4it.com');
+        $this->email->reply_to($email);
+        $this->email->subject('PFP web site Contact Us');
+        $message = 'Name: ' . $name . '<br />';
+        $message += 'E-mail address: ' . $email . '<br />&nbsp;<br />';
+        $ClearText = preg_replace( "/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags(tellus))) );
+        $message += 'Message: ' . $ClearText;
+        $this->email->message($message);
+        $this->email->send();
+        
+        return;
+    }
+    
     public function get_show_notes() {
         $this->load->model('latestshow');
         $show_info = $this->latestshow->getLatestShow();

@@ -76,7 +76,7 @@
     <div class="toolbarDiv"><a href="#aboutus" ng-click="snClick('About Us')">About Us</a></div>
     <div class="toolbarDiv">Our Friends</div>
     <div class="toolbarDiv">Our Go-To Sites</div>
-    <div class="toolbarDiv">Contact Us</div>
+    <div class="toolbarDiv"><a href="#cactus" ng-click="snClick('Contact Us')">Contact Us</a></div>
 </div>
     
 <?php
