@@ -263,8 +263,7 @@ h4 {
     position: relative;
     width: 610px;
 }
-.paginatedList li, .aboutYourHosts a {
-.paginatedList li {    cursor: pointer; }
+.paginatedList li, .aboutYourHosts a { cursor: pointer; }
 
 #csubmit {
     float: right;
