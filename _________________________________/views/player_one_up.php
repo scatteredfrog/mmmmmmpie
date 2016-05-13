@@ -82,6 +82,7 @@
                 break;
             default:
                 $continues = $rate . ' Continues';
+                break;
         }
         return $continues;
     }
