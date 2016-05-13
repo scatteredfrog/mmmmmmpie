@@ -222,7 +222,7 @@ $config['log_threshold'] = 4;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['log_path'] = '/Volumes/Coding/piefactory/error.log';
 
 /*
 |--------------------------------------------------------------------------
@@ -466,7 +466,7 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = 'UM6';
 
 /*
 |--------------------------------------------------------------------------
