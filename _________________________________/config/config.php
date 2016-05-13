@@ -222,7 +222,7 @@ $config['log_threshold'] = 4;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '/Volumes/Coding/piefactory/error.log';
+$config['log_path'] = substr($_SERVER['HTTP_HOST'],0,5) === 'local' ? '/Volumes/Coding/piefactory/error.log' : '';
 
 /*
 |--------------------------------------------------------------------------
