@@ -52,7 +52,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     $scope.aboutSean += "At various times Sean has owned an Atari 5200, Intellivision, Vectrex, Commodore ";
     $scope.aboutSean += "64, and various Amigas. Now he owns an Atari ";
     $scope.aboutSean += "600XL, Atari 7800, and a Retro Duo Portable, on which he plays NES, SNES, and ";
-    $scope.aboutSean += "Sega Genesis games. He holds seven world records on Twin Galaxies.<br />";
+    $scope.aboutSean += "Sega Genesis games. He holds eight world records on Twin Galaxies.<br />";
     $scope.aboutSean += "&nbsp;<br />Sean lives in Chicago and is an avid music fan; ";
     $scope.aboutSean += "ask him about the time he ";
     $scope.aboutSean += "shook hands with Brian Wilson or testified in a Mike Love lawsuit.";
