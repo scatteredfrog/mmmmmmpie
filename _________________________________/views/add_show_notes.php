@@ -1,5 +1,5 @@
 <?php
-    $this->load->library('session');
+//    $this->load->library('session');
     $this->load->helper('form');
     echo link_tag('css/show_notes.css');
     echo "<script src='" . base_url("js/shownotesadmin.js") . "'></script>";
@@ -8,7 +8,7 @@
     <?php
         echo heading('Show Notes Admin');
     ?>
-    <div id="add_notes_form" <?php if ($this->session->username) { ?>class="formVisible" <?php } ?>>
+    <div id="add_notes_form" <?php if (isset($_SESSION['username'])) { ?>class="formVisible" <?php } ?>>
         <span id="add_new_show_click" class="clickMenuOption">ADD NEW SHOW</span> | 
         <span id="add_notes_click" class="clickMenuOption">ADD NOTES TO EXISTING SHOW</span> | 
         <span id="edit_existing_notes_click" class="clickMenuOption">EDIT EXISTING NOTES</span> | 
@@ -17,7 +17,7 @@
         <span id="add_news_click" class="clickMenuOption">ADD NEWS</span> | 
         <span id="log_out_click" class="clickMenuOption">LOG OUT</span>
     </div>
-    <div id="add_notes_login" <?php if (!$this->session->username) { ?>class="formVisible" <?php } ?>>
+    <div id="add_notes_login" <?php if (!isset($_SESSION['username'])) { ?>class="formVisible" <?php } ?>>
         <?php
             echo form_open('',array('id' => 'add_notes_login_form'));
             echo "<div class='formLabelRow'><div class='labelDiv'>E-mail address:</div>";

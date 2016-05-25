@@ -1,6 +1,17 @@
 var app = angular.module('pfp',['ngRoute','ngSanitize']);
 
 app.controller('showNotes', function($scope, $http, $route, $routeParams, $location) {
+    $scope.tg_sean = 'nine'; // current count of Sean's Twin Galaxies world records
+
+    $scope.patrons = [  'Rory Coleman',
+                        'Michael D\'Angelo',
+                        'Scott Lambert',
+                        'Nathaniel Lockhart',
+                        'Andy Reierson',
+                        'Keith Sheehan',
+                        'Richard Valdez'
+                    ];
+
     $scope.messageChars = 0;
     $scope.cemail = '';
     $scope.cname = '';
@@ -28,35 +39,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     $scope.hideMe = false;
     $scope.show_news = [];
     $scope.lastNewsPopped = 0;
-    $scope.about = "Jim and Sean, shown here discussing which games they'll <span class='strike'>look up on ";
-    $scope.about += "Wikipedia</span> research diligently so they can have an intelligent discussion on the ";
-    $scope.about += "next episode, on a biweekly basis try to fulfill their mission to make Tinkle Pit a ";
-    $scope.about += "household name.<br />&nbsp;<br />In each episode, Sean and Jim discuss two (2) classic ";
-    $scope.about += "arcade games and reveal a common theme. Because they're longtime classic console ";
-    $scope.about += "gamers, the hosts also give a home gamer's perspective on the games they discuss. (And ";
-    $scope.about += "because both are from the Chicago area, there's a bit of provinciality as well.)<br />";
-    $scope.about += "&nbsp;<br />Oh...did we mention...Tinkle Pit?";
-    $scope.aboutJim = "Jimmy G is a lifelong resident of the SW Chicago suburbs.  He's pretty dang old, and ";
-    $scope.aboutJim += "getting older, but still feels like he's 27.<br />&nbsp;<br />At one time or ";
-    $scope.aboutJim += "another, he's owned every Atari programmable game system, except the Jaguar. ";
-    $scope.aboutJim += "Currently Jim has an Atari 2600, 5200, 7800, 65XE, Coleco Adam, Wii, Wii U, several ";
-    $scope.aboutJim += "Nintendo DS units, a Sega Master System, and currently is exploring emulation with ";
-    $scope.aboutJim += "the Raspberry Pi.<br />&nbsp;<br>Jim also enjoys cheesy B films, ";
-    $scope.aboutJim += "<span class='italic'>Mystery Science Theater 3000</span>, Monty Python, bicycle ";
-    $scope.aboutJim += "riding (his top distance is 100 miles in one ride), hiking, collecting road maps, ";
-    $scope.aboutJim += "and talking about himself in the third person.";
-    $scope.aboutSean = "Sean is a lifelong Libra and a web developer. ";
-    $scope.aboutSean += "(And that he also developed this site proves that programmers ";
-    $scope.aboutSean += "just can't design.)<br />&nbsp;<br />His first console was an Atari ";
-    $scope.aboutSean += "2600, a Christmas present in 1982; he still plays 2600 games to this day. ";
-    $scope.aboutSean += "At various times Sean has owned an Atari 5200, Intellivision, Vectrex, Commodore ";
-    $scope.aboutSean += "64, and various Amigas. Now he owns an Atari ";
-    $scope.aboutSean += "600XL, Atari 7800, and a Retro Duo Portable, on which he plays NES, SNES, and ";
-    $scope.aboutSean += "Sega Genesis games. He holds eight world records on Twin Galaxies.<br />";
-    $scope.aboutSean += "&nbsp;<br />Sean lives in Chicago and is an avid music fan; ";
-    $scope.aboutSean += "ask him about the time he ";
-    $scope.aboutSean += "shook hands with Brian Wilson or testified in a Mike Love lawsuit.";
-    $scope.aboutHosts = $scope.about;
+    $scope.aboutHosts = 'about';
     
     // retrieve news upon load
     $http.get('index.php/levelzero/get_news').success(
@@ -150,16 +133,21 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     $scope.changeHost = function(talkerguy) {
         switch(talkerguy) {
             case 'jim':
-                $scope.aboutHosts = $scope.aboutJim;
+                $scope.aboutHosts = 'jim';
                 break;
             case 'sean':
-                $scope.aboutHosts = $scope.aboutSean;
+                $scope.aboutHosts = 'sean';
+                break;
+            case 'credits':
+                $scope.aboutHosts = 'credits';
                 break;
             default:
-                $scope.aboutHosts = $scope.about;
+                $scope.aboutHosts = 'about';
                 break;
         }
-    }
+    };
+    
+    
     $scope.incrementPage = function () { $scope.currentPage++; };        
     $scope.decrementPage = function () { $scope.currentPage--; };
     $scope.incrementNewsPage = function () { $scope.currentNewsPage++; };        
@@ -199,8 +187,6 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
         $scope.displayIndex = idx;
         $scope.displayNotes = true;
         $scope.displayCurrent = $scope.page[$scope.currentPage][idx];
-        console.log("displayCurreent:");
-        console.dir($scope.displayCurrent);
     };
     
     $scope.showShows = function() {
@@ -209,6 +195,10 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
     
     $scope.snClick = function(link) {
         $scope.linkTitle = link === 'shownotes' ? 'show notes' : link;
+    };
+    
+    $scope.scroll = function() {
+        Scroll();
     };
     
     $scope.$watch(function() {
@@ -228,7 +218,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
                     $scope.linkTitle = 'about us';
                     break;
                 case 'cactus':
-                    $scope.linkTItle = 'contact us';
+                    $scope.linkTitle = 'contact us';
                     $scope.messageSent = false;
                     break;
                 default:

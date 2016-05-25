@@ -233,9 +233,7 @@ h4 {
     padding-top: 12px;
 }
 
-.toolbarDiv:hover, .toolbarDiv a:hover {
-    color: #bdce49;
-}
+.toolbarDiv:hover, .toolbarDiv a:hover {    color: #bdce49; }
 
 .templateBody h1 {
     position: relative;
@@ -264,6 +262,32 @@ h4 {
     width: 610px;
 }
 .paginatedList li, .aboutYourHosts a { cursor: pointer; }
+
+.credits {
+    height: 216px;
+    width: 100%;
+    position: relative;
+    overflow-y: hidden;
+    margin-bottom: 16px;
+}
+
+.credHead {
+    clear: both;
+    color: #ff00ff;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.cred {
+    clear: both;
+    float: left;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
 
 #csubmit {
     float: right;
@@ -372,6 +396,40 @@ h4 {
     font-style: italic;
 }
 
-.redChars {
-    color: #ff0000;    
+.redChars {   color: #ff0000;    }
+
+.marquee {
+    marquee-style: scroll;
+    overflow-style: marquee-block;
+    marquee-direction: forward;
+    -moz-animation: 20s linear 0s normal none infinite running scroll-up;
+    height: 530px;
+    position: absolute;
+    -moz-transform: translateY(100%);
+    width: 100%;
+    display: inline;
+    vertical-aling: top;
+}
+
+@-moz-keyframes scroll-up {
+ 0%   { -moz-transform: translateY(-100%); }
+ 100% { -moz-transform: translateY(-100%); }
+}
+@keyframes scroll-up {
+ 0%   { 
+ -moz-transform: translateY(100%); /* Browser bug fix */
+ -webkit-transform: translateY(100%); /* Browser bug fix */
+ transform: translateY(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateY(-100%); /* Browser bug fix */
+ -webkit-transform: translateY(-100%); /* Browser bug fix */
+ transform: translateY(-100%); 
+ }
+}
+
+.credSpace {
+    float: left;
+    height: 35px;
+    position: relative;
 }

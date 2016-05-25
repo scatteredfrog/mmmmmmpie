@@ -25,7 +25,8 @@ class Shownotesadmin extends CI_Controller {
         }
         
         public function logOut() {
-            $this->session->sess_destroy();
+//            $this->session->sess_destroy();
+            unset($_SESSION);
         }
         
         public function showRatings() {
@@ -63,7 +64,8 @@ class Shownotesadmin extends CI_Controller {
             $password = $this->input->post('password');
             $this->load->model('shownotesadmin_model');
             $logged_in_user = $this->shownotesadmin_model->login($username,$password);
-            $this->session->set_userdata('username',$logged_in_user);
+            $_SESSION['username'] = $logged_in_user;
+//            $this->session->set_userdata('username',$logged_in_user);
             echo $logged_in_user;
         }
         

@@ -22,6 +22,7 @@ class Levelzero extends CI_Controller {
     
     public function aboutus() {
         $this->load->view('about_us');
+        $this->output->delete_cache();
     }
     
     public function cactus() {
