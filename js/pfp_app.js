@@ -7,6 +7,7 @@ app.controller('showNotes', function($scope, $http, $route, $routeParams, $locat
                         'Michael D\'Angelo',
                         'Scott Lambert',
                         'Nathaniel Lockhart',
+                        'Greg Polander',
                         'Andy Reierson',
                         'Keith Sheehan',
                         'Richard Valdez'
