@@ -94,7 +94,7 @@ if (substr($hs,0,5) === 'local' && stristr($rt,'Junk')) {
     $db['default']['password'] = 'sqflirzel';
     $db['default']['database'] = 'fab4it_com';    
 } else {
-    $db['default']['hostname'] = 'mysql.fab4it.com';
+    $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'logthedo_fab4it';
     $db['default']['password'] = '4baf09282004db';
     $db['default']['database'] = 'logthedo_fab4it_com';
