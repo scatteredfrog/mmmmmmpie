@@ -49,7 +49,7 @@ class Shownotesadmin_model extends CI_Model {
             echo '3';
             return;
         }
-        $publish = $publish ? 1 : 0;
+        $publish = $publish == 'true' ? 1 : 0;
         $this->db->set('episode_number', $episode_number);
         $this->db->set('episode_topic', $episode_topic);
         $this->db->set('download_link', $download_link);
