@@ -95,6 +95,12 @@ class Shownotesadmin_model extends CI_Model {
             if ($epnum >15) {
                 $epnum--;
             }
+            if ($epnum == 67) {
+                $epnum = "Bonus Episode 2017";
+            }
+            if ($epnum > 67) {
+                $epnum--;
+            }
             $data[$c]['id'] = $row->id;
             $data[$c]['episode_number'] = $epnum;
             $data[$c]['episode_topic'] = $row->episode_topic;
@@ -204,6 +210,12 @@ class Shownotesadmin_model extends CI_Model {
         foreach ($query->result() as $row) {
             $epnum = (int)$row->episode_number;
             if ($epnum > 15) {
+                $epnum--;
+            }
+            if ($epnum == 67) {
+                $epnum = 'Bonus Episode 2017';
+            }
+            if ($epnum > 67) {
                 $epnum--;
             }
             $data .= "<option id='option". $row->episode_number . "'>";

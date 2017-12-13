@@ -43,6 +43,11 @@
             <div id="latest_show">
                 <?php
                     echo heading('LATEST EPISODE:',2);
+                    if ($episode[0]['episode_number'] == '68') {
+                        $episode[0]['episode_number'] = 'Bonus Episode 2017';
+                    } else if ($episode[0]['episode_number'] > 68) {
+                        $episode[0]['episode_number']--;
+                    }
                     echo '<div id="latest_deets">Episode '.$episode[0]['episode_number'] . ': '. $episode[0]['episode_topic'] . '<br />';
                     echo anchor($episode[0]['download_link'],'Click here to download or listen');
                     echo '</div>';
