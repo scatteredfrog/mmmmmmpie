@@ -10,23 +10,28 @@ class Levelzero extends CI_Controller {
         $latest_show['class_num'] = $latest_show['episode'][0]['class_num'];
         $this->load->view('main',$latest_show);
 //        $this->load->view('home');
+        $this->load->view('footer');
     }
 
     public function home() {
         $this->load->view('home');
+        $this->load->view('footer');
     }
     
     public function show_notes() {
         $this->load->view('show_notes');
+        $this->load->view('footer');
     }
     
     public function aboutus() {
         $this->load->view('about_us');
         $this->output->delete_cache();
+        $this->load->view('footer');
     }
     
     public function cactus() {
         $this->load->view('contact_us');
+        $this->load->view('footer');
     }
     
     public function submitContact() {
@@ -73,5 +78,6 @@ class Levelzero extends CI_Controller {
     
     public function news() {
         $this->load->view('news');
+        $this->load->view('footer');
     }
 }
