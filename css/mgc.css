@@ -1,0 +1,32 @@
+table {
+    border-radius: 5px;
+    border-style: double;
+    border-color: #ff7419;
+    position: relative;
+    top: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    position: relative;
+}
+
+.tableHeading {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #ff7419;
+    padding: 12px;
+}
+
+td {
+    border-color: #ff7419;
+    border-width: 1px;
+    border-style: inset;
+    padding: 6px;
+}
+.centerThis {
+    text-align: center; 
+}
+
+.lessBlack {
+    background-color: #333;
+}
