@@ -3,13 +3,15 @@ var app = angular.module('pfp',['ngRoute','ngSanitize']);
 app.controller('showNotes', function($scope, $http, $route, $routeParams, $location) {
     $scope.tg_sean = 'eight'; // current count of Sean's Twin Galaxies world records
 
-    $scope.patrons = [  'Rory Coleman',
+    $scope.patrons = [  'Dee Alex',
+                        'Rory Coleman',
                         'Michael D\'Angelo',
                         'Kyle Etter',
                         'Nathaniel Lockhart',
                         'Greg Polander',
                         'Jonas Rullo',
                         'Keith Sheehan',
+                        'PJ Steele',
                         'Underground Retrocade',
                         'Richard Valdez'
                     ];

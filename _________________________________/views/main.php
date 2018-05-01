@@ -15,6 +15,9 @@
         $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
     }
     echo link_tag('css/pfp_main.css');
+    if ($load_css) {
+        echo link_tag('css/' . $load_css . '.css');
+    }
 
 ?>
     <script src=<?=base_url("js/jquery-1.9.1.min.js"); ?>></script>
@@ -80,13 +83,16 @@
     <div class="toolbarDiv"><a href="#shownotes" ng-click="showShows(); linkTitle='Show Notes';">Show Notes</a></div>
     <div class="toolbarDiv"><a href="#aboutus" ng-click="snClick('About Us')">About Us</a></div>
     <div class="toolbarDiv">Our Friends</div>
-    <div class="toolbarDiv">Our Go-To Sites</div>
     <div class="toolbarDiv"><a href="#cactus" ng-click="snClick('Contact Us')">Contact Us</a></div>
 </div>
     
 <?php
     echo "<div class='templateBody'><hr />";
-    echo heading("{{linkTitle}}");
+    if ($mgc) {
+        echo heading("MIDWEST GAMING CLASSIC 2018 - FULL-LENGTH INTERVIEWS");
+    } else {
+        echo heading("{{linkTitle}}");
+    }
     echo "<div ng-view id='show_notes_heading'><hr />";
     echo "</div>";
     echo "</div>";
