@@ -15,7 +15,7 @@
         $imgSrc = '/piefactory/images/wordpress_pf_logo.png';
     }
     echo link_tag('css/pfp_main.css');
-    if ($load_css) {
+    if (isset($load_css) && $load_css) {
         echo link_tag('css/' . $load_css . '.css');
     }
 
@@ -88,7 +88,7 @@
     
 <?php
     echo "<div class='templateBody'><hr />";
-    if ($mgc) {
+    if (isset($mgc) && $mgc) {
         echo heading("MIDWEST GAMING CLASSIC 2018 - FULL-LENGTH INTERVIEWS");
     } else {
         echo heading("{{linkTitle}}");
